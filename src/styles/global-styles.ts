@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import { StyleConstants } from './StyleConstants';
+import '../styles/tailwind.css';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
+
   html,
   body {
     height: 100%;
@@ -18,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   body.fontLoaded {
     font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
-  
+
   p,
   label {
     line-height: 1.5em;
