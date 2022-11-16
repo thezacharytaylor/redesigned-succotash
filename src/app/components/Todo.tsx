@@ -21,28 +21,35 @@ function Todo() {
     },
   ];
 
-  const completeTodo = () => {};
+  // const todoItems = () => [...todoList];
+
+  const completeTodo = id => {
+    todoList[id].completed = true;
+  };
 
   return (
-    <div className="border-solid border-slate-50 shadow-sm bg-gray-200 p-10 rounded-md my-5 max-w-md">
+    <div className="max-w-md p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
       <input type="text" className="border-gray-500" />
-      <hr className="my-4 border-solid border-gray-800" />
+      <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold">ToDo:</h2>
       <ul className="">
-        <li className="ml-3 flex items-center {{}}">
-          <input
-            type="checkbox"
-            id="1"
-            name="todo-1"
-            value="learn"
-            className="mr-5"
-          />
-          <label>Learn React</label>
-          <button className="ml-auto mr-3">X</button>
-        </li>
-        <li className="ml-8">Do that</li>
-        <li className="ml-8">Learn react</li>
-        <li className="ml-8">learn tailwind</li>
+        {todoList.map((todo, index) => (
+          <li
+            key={todo.id}
+            className={`ml-3 flex items-center ${
+              todo.completed ? 'line-through' : ''
+            }"`}
+          >
+            <input
+              type="checkbox"
+              className="mr-5"
+              onChange={() => completeTodo(todo.id)}
+              checked={todo.completed ? true : false}
+            />
+            <label>Learn React</label>
+            <button className="inline-block ml-auto mr-3">X</button>
+          </li>
+        ))}
       </ul>
     </div>
   );
