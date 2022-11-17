@@ -5,22 +5,20 @@ function Todo() {
   const [todos, setTodos] = React.useState([
     {
       id: 1,
-      title: 'Learn React',
+      title: 'Move to components',
       completed: false,
     },
     {
       id: 2,
-      title: 'Learn Routing',
-      completed: true,
+      title: 'Confirm Routing',
+      completed: false,
     },
     {
       id: 3,
-      title: 'Learn Tailwind',
+      title: 'Fix Tailwind',
       completed: false,
     },
   ]);
-
-  // const todoItems = () => [...todoList];
 
   const handleTodoInput = event => {
     setTodoInput(event.target.value);
