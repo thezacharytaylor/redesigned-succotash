@@ -8,13 +8,10 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './appRoutes';
 
 import { GlobalStyle } from 'styles/global-styles';
-
-// import { HomePage } from './pages/HomePage/Loadable';
-import Home from './views/pages/Home';
-import { NotFoundPage } from './pages/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
 export function App() {
@@ -28,11 +25,7 @@ export function App() {
       >
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <AppRoutes />
       <GlobalStyle />
     </BrowserRouter>
   );
