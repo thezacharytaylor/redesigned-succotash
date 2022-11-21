@@ -1,47 +1,43 @@
 import React from 'react';
 
-function Golfers() {
-  const [golferInput, setGolferInput] = React.useState({
-    name: '',
-    score: 0,
-  });
-  // const [golferInput, setGolferInput] = React.useState('');
-  const [golfers, setGolfers] = React.useState([
-    {
-      id: 1,
-      name: 'Ken Price',
-      score: 20,
-      date: '10/24/2022',
-      inCup: true,
-      qualified: true,
-      checkedIn: true,
-      seed: 1,
-    },
-    {
-      id: 2,
-      name: 'David Green',
-      score: 20,
-      date: '10/24/2022',
-      inCup: true,
-      qualified: true,
-      checkedIn: true,
-      seed: 2,
-    },
-  ]);
+const initialInput = {
+  name: '',
+  score: 0,
+};
 
-  const handleGolferInput = event => {
-    const updatedInput = golferInput;
-    console.log(golferInput.name);
-    if (event.target.name === 'score') {
-      updatedInput.score = updatedInput.score + event.target.value;
-    } else {
-      updatedInput.name = updatedInput.name + event.target.value;
-    }
-    // };
-    setGolferInput(updatedInput);
+const initialGolfers = [
+  {
+    id: 1,
+    name: 'Ken Price',
+    score: 20,
+    date: '10/24/2022',
+    inCup: true,
+    qualified: true,
+    checkedIn: true,
+    seed: 1,
+  },
+  {
+    id: 2,
+    name: 'David Green',
+    score: 18,
+    date: '10/24/2022',
+    inCup: true,
+    qualified: true,
+    checkedIn: true,
+    seed: 2,
+  },
+];
+
+function Golfers() {
+  const [golferInput, setGolferInput] = React.useState(initialInput);
+  const [golfers, setGolfers] = React.useState(initialGolfers);
+
+  const handleGolferInput = (event: { target: { name: any; value: any } }) => {
+    const { name, value } = event.target;
+    setGolferInput({ ...golferInput, [name]: value });
   };
 
-  const addGolfer = event => {
+  const addGolfer = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     setGolfers([
@@ -100,7 +96,7 @@ function Golfers() {
         <tbody>
           {golfers.map((golfer, index) => (
             <tr key={golfer.id}>
-              <td>1</td>
+              <td>{index + 1}</td>
               <td>{golfer.name}</td>
               <td>{golfer.score}</td>
               <td>{golfer.date}</td>
