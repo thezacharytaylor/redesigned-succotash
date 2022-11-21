@@ -15,6 +15,7 @@ const initialGolfers = [
     qualified: true,
     checkedIn: true,
     seed: 1,
+    previousPlayer: false,
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const initialGolfers = [
     qualified: true,
     checkedIn: true,
     seed: 2,
+    previousPlayer: true,
   },
 ];
 
@@ -78,6 +80,7 @@ function Golfers() {
         qualified: true,
         checkedIn: true,
         seed: 2,
+        previousPlayer: false,
       },
     ]);
 
@@ -87,7 +90,7 @@ function Golfers() {
   // const deleteGolfer = id => {};
 
   return (
-    <div className="max-w-md p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
+    <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
       <form action="#" onSubmit={handleFormSubmit} className="flex">
         <input
           name="name"
