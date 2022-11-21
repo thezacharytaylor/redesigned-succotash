@@ -9,7 +9,7 @@ const initialGolfers = [
   {
     id: 1,
     name: 'Ken Price',
-    score: 20,
+    score: 18,
     date: '10/24/2022',
     inCup: true,
     qualified: true,
@@ -19,7 +19,7 @@ const initialGolfers = [
   {
     id: 2,
     name: 'David Green',
-    score: 18,
+    score: 19,
     date: '10/24/2022',
     inCup: true,
     qualified: true,
@@ -123,14 +123,16 @@ function Golfers() {
           </tr>
         </thead>
         <tbody>
-          {golfers.map((golfer, index) => (
-            <tr key={golfer.id}>
-              <td>{index + 1}</td>
-              <td>{golfer.name}</td>
-              <td>{golfer.score}</td>
-              <td>{golfer.date}</td>
-            </tr>
-          ))}
+          {golfers
+            .sort((a, b) => b.score - a.score)
+            .map((golfer, index) => (
+              <tr key={golfer.id}>
+                <td>{index + 1}</td>
+                <td>{golfer.name}</td>
+                <td>{golfer.score}</td>
+                <td>{golfer.date}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
