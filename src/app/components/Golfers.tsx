@@ -30,20 +30,15 @@ function Golfers() {
   ]);
 
   const handleGolferInput = event => {
-    // const updatedInput = {
-    // if (typeof event.target.value === 'number') {
-    //   const updatedInput = {
-    //     name: golferInput.name,
-    //     score: event.target.value,
-    //   };
-    // } else {
-    // }
-    // setGolferInput(updatedInput);
-    // if (typeof event.target.value === 'number') {
-    //   setGolferInput({ score: event.target.value });
-    // } else {
-    //   setGolferInput({ name: event.target.value, score: golferInput.score });
-    // }
+    const updatedInput = golferInput;
+    console.log(golferInput.name);
+    if (event.target.name === 'score') {
+      updatedInput.score = updatedInput.score + event.target.value;
+    } else {
+      updatedInput.name = updatedInput.name + event.target.value;
+    }
+    // };
+    setGolferInput(updatedInput);
   };
 
   const addGolfer = event => {
@@ -54,7 +49,7 @@ function Golfers() {
       {
         id: golfers[golfers.length - 1].id + 1,
         name: golferInput.name,
-        score: 20,
+        score: golferInput.score,
         date: new Date().toLocaleDateString('en-US'),
         inCup: true,
         qualified: true,
@@ -66,7 +61,7 @@ function Golfers() {
     setGolferInput({ name: '', score: 0 });
   };
 
-  const deleteGolfer = id => {};
+  // const deleteGolfer = id => {};
 
   return (
     <div className="max-w-md p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
@@ -75,7 +70,7 @@ function Golfers() {
           name="name"
           type="text"
           className="border-gray-500"
-          placeholder="Name"
+          // placeholder="Name"
           value={golferInput.name}
           onChange={handleGolferInput}
         />

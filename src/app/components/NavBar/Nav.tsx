@@ -1,7 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
+// import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
+import { NewspaperIcon } from '@heroicons/react/24/solid';
 import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
+import { ChartBarIcon } from '@heroicons/react/24/solid';
 
 export function Nav() {
   return (
@@ -12,7 +14,7 @@ export function Nav() {
         title="Documentation Page"
         rel="noopener noreferrer"
       >
-        <DocumentationIcon />
+        <NewspaperIcon className="w-5 h-5 mr-1" />
         Documentation
       </Item>
       <Item
@@ -25,6 +27,7 @@ export function Nav() {
         Github
       </Item>
       <Item href="/leaderboard" target="" title="Leaderboard">
+        <ChartBarIcon className="w-5 h-5 mr-1" />
         Leaderboard
       </Item>
     </Wrapper>
