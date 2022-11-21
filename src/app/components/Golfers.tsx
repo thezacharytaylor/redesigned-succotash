@@ -2,7 +2,7 @@ import React from 'react';
 
 const initialInput = {
   name: '',
-  score: 0,
+  score: 1,
 };
 
 const initialGolfers = [
@@ -37,9 +37,36 @@ function Golfers() {
     setGolferInput({ ...golferInput, [name]: value });
   };
 
-  const addGolfer = (event: { preventDefault: () => void }) => {
+  const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
+    // const updateGolferCheck = golfers.filter((golfer, index) => {
+    //   return golfer.name === golferInput.name ? true : false;
+    // });
+
+    const updatedGolfer = updateGolfer();
+
+    if (!updatedGolfer) {
+      addGolfer();
+    }
+  };
+
+  const updateGolfer = () => {
+    let locatedGolfer = false;
+    const updatedGolfers = golfers.map(golfer => {
+      if (golfer.name === golferInput.name) {
+        golfer.score = golferInput.score;
+        locatedGolfer = true;
+      }
+
+      return golfer;
+    });
+
+    setGolfers(updatedGolfers);
+    return locatedGolfer;
+  };
+
+  const addGolfer = () => {
     setGolfers([
       ...golfers,
       {
@@ -61,12 +88,12 @@ function Golfers() {
 
   return (
     <div className="max-w-md p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <form action="#" onSubmit={addGolfer}>
+      <form action="#" onSubmit={handleFormSubmit} className="flex">
         <input
           name="name"
           type="text"
           className="border-gray-500"
-          // placeholder="Name"
+          placeholder="Name"
           value={golferInput.name}
           onChange={handleGolferInput}
         />
@@ -74,7 +101,9 @@ function Golfers() {
           name="score"
           type="number"
           className="border-gray-500"
-          placeholder="0"
+          placeholder="1"
+          min="1"
+          max="95"
           value={golferInput.score}
           onChange={handleGolferInput}
         />
