@@ -24,6 +24,9 @@ export function Nav() {
         <GithubIcon />
         Github
       </Item>
+      <Item href="/leaderboard" target="" title="Leaderboard">
+        Leaderboard
+      </Item>
     </Wrapper>
   );
 }

@@ -24,6 +24,7 @@ export function App() {
         htmlAttributes={{ lang: i18n.language }}
       >
         <meta name="description" content="A React Boilerplate application" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Helmet>
       <AppRoutes />
       <GlobalStyle />
