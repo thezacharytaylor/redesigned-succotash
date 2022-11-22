@@ -1,5 +1,6 @@
 import React from 'react';
 import LeaderBoard from './Leaderboard';
+import Form from './Form';
 
 const initialInput = {
   name: '',
@@ -42,11 +43,6 @@ function Golfers() {
 
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-
-    // const updateGolferCheck = golfers.filter((golfer, index) => {
-    //   return golfer.name === golferInput.name ? true : false;
-    // });
-
     const updatedGolfer = updateGolfer();
 
     if (!updatedGolfer) {
@@ -85,36 +81,18 @@ function Golfers() {
       },
     ]);
 
-    setGolferInput({ name: '', score: 0 });
+    setGolferInput({ name: '', score: 1 });
   };
 
   // const deleteGolfer = id => {};
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <form action="#" onSubmit={handleFormSubmit} className="flex">
-        <input
-          name="name"
-          type="text"
-          className="border-gray-500"
-          placeholder="Name"
-          value={golferInput.name}
-          onChange={handleGolferInput}
-        />
-        <input
-          name="score"
-          type="number"
-          className="border-gray-500"
-          placeholder="1"
-          min="1"
-          max="95"
-          value={golferInput.score}
-          onChange={handleGolferInput}
-        />
-        <button type="submit" className="px-2 text-white bg-gray-700">
-          +
-        </button>
-      </form>
+      <Form
+        submit={handleFormSubmit}
+        input={handleGolferInput}
+        info={golferInput}
+      />
       <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold">Golfers:</h2>
       <LeaderBoard
