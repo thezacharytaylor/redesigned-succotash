@@ -6,8 +6,8 @@ const Leaderboard = ({ headings, players }) => {
     <table className="table-auto">
       <thead>
         <tr>
-          {headings.map(heading => (
-            <th>{heading}</th>
+          {headings.map((heading, index) => (
+            <th key={index}>{heading}</th>
           ))}
         </tr>
       </thead>
@@ -15,7 +15,7 @@ const Leaderboard = ({ headings, players }) => {
         {players
           .sort((a, b) => b.score - a.score)
           .map((golfer, index) => (
-            <tr key={golfer.id}>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{golfer.name}</td>
               <td>{golfer.score}</td>
