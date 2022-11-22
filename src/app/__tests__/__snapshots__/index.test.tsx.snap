@@ -18,17 +18,12 @@ exports[`<App /> should render and match the snapshot 1`] = `
       content="A React Boilerplate application"
       name="description"
     />
+    <link
+      href="https://rsms.me/inter/inter.css"
+      rel="stylesheet"
+    />
   </Helmet>
-  <Routes>
-    <Route
-      element={<Unknown />}
-      path="/"
-    />
-    <Route
-      element={<Unknown />}
-      path="*"
-    />
-  </Routes>
+  <AppRoutes />
   <Memo(l) />
 </BrowserRouter>
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import LeaderBoard from './Leaderboard';
 
 const initialInput = {
   name: '',
@@ -116,28 +117,10 @@ function Golfers() {
       </form>
       <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold">Golfers:</h2>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Score</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {golfers
-            .sort((a, b) => b.score - a.score)
-            .map((golfer, index) => (
-              <tr key={golfer.id}>
-                <td>{index + 1}</td>
-                <td>{golfer.name}</td>
-                <td>{golfer.score}</td>
-                <td>{golfer.date}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <LeaderBoard
+        headings={['Rank', 'Name', 'Score', 'Date']}
+        players={golfers}
+      />
     </div>
   );
 }
