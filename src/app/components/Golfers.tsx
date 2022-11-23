@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LeaderBoard from './Leaderboard';
 import Form from './Form';
 
@@ -33,8 +33,8 @@ const initialGolfers = [
 ];
 
 function Golfers() {
-  const [golferInput, setGolferInput] = React.useState(initialInput);
-  const [golfers, setGolfers] = React.useState(initialGolfers);
+  const [golferInput, setGolferInput] = useState(initialInput);
+  const [golfers, setGolfers] = useState(initialGolfers);
 
   const handleGolferInput = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
