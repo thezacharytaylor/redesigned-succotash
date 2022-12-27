@@ -84,18 +84,18 @@ function Golfers() {
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <Form
-        submit={handleFormSubmit}
-        input={handleGolferInput}
-        info={golferInput}
-      />
-      <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold">
         <YearDisplay> Individual Qualifying High Scores</YearDisplay>
       </h2>
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
         players={golfers}
+      />
+      <hr className="my-4 border-gray-800 border-solid" />
+      <Form
+        submit={handleFormSubmit}
+        input={handleGolferInput}
+        info={golferInput}
       />
     </div>
   );

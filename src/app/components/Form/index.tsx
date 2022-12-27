@@ -4,13 +4,18 @@ import Input from './Input';
 
 const Form = ({ submit, input, info }) => {
   return (
-    <form action="#" onSubmit={submit} className="flex">
-      <Input name="name" placeholder="Name" value={info.name} func={input} />
-      <Input name="score" placeholder={1} value={info.score} func={input} />
-      <button type="submit" className="px-2 text-white bg-gray-700">
-        +
-      </button>
-    </form>
+    <>
+      <form action="#" onSubmit={submit} className="flex">
+        <Input name="name" placeholder="Name" value={info.name} func={input} />
+        <Input name="score" placeholder={1} value={info.score} func={input} />
+        <button
+          type="submit"
+          className="px-4 text-lg text-white bg-gray-700 lg:text-2xl"
+        >
+          +
+        </button>
+      </form>
+    </>
   );
 };
 
