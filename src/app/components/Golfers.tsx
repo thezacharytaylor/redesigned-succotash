@@ -1,40 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LeaderBoard from './Leaderboard';
 import Form from './Form';
+import dayjs from 'dayjs';
+import GolferData from '../../store/golfers.json';
+import YearDisplay from './YearDisplay';
 
 const initialInput = {
   name: '',
   score: 1,
 };
 
-const initialGolfers = [
-  {
-    id: 1,
-    name: 'Ken Price',
-    score: 18,
-    date: '10/24/2022',
-    inCup: true,
-    qualified: true,
-    checkedIn: true,
-    seed: 1,
-    previousPlayer: false,
-  },
-  {
-    id: 2,
-    name: 'David Green',
-    score: 19,
-    date: '10/24/2022',
-    inCup: true,
-    qualified: true,
-    checkedIn: true,
-    seed: 2,
-    previousPlayer: true,
-  },
-];
+const defaultGolfer = {
+  id: 0,
+  name: '',
+  score: 0,
+  date: '',
+  inCup: false,
+  qualified: false,
+  checkedIn: false,
+  seed: 16,
+  previousPlayer: false,
+};
 
 function Golfers() {
   const [golferInput, setGolferInput] = useState(initialInput);
-  const [golfers, setGolfers] = useState(initialGolfers);
+  const [golfers, setGolfers] = useState([defaultGolfer]);
+
+  useEffect(() => {
+    setGolfers([...GolferData]);
+  }, []);
 
   const handleGolferInput = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
@@ -55,6 +49,7 @@ function Golfers() {
     const updatedGolfers = golfers.map(golfer => {
       if (golfer.name === golferInput.name) {
         golfer.score = golferInput.score;
+        golfer.date = dayjs().format('MM/DD/YYYY');
         locatedGolfer = true;
       }
 
@@ -65,6 +60,7 @@ function Golfers() {
     return locatedGolfer;
   };
 
+  // This might need to be a custom hook
   const addGolfer = () => {
     setGolfers([
       ...golfers,
@@ -72,7 +68,7 @@ function Golfers() {
         id: golfers[golfers.length - 1].id + 1,
         name: golferInput.name,
         score: golferInput.score,
-        date: new Date().toLocaleDateString('en-US'),
+        date: dayjs().format('MM/DD/YYYY'),
         inCup: true,
         qualified: true,
         checkedIn: true,
@@ -94,7 +90,9 @@ function Golfers() {
         info={golferInput}
       />
       <hr className="my-4 border-gray-800 border-solid" />
-      <h2 className="mb-4 text-lg font-bold">Golfers:</h2>
+      <h2 className="mb-4 text-lg font-bold">
+        <YearDisplay> Golfers:</YearDisplay>
+      </h2>
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
         players={golfers}
