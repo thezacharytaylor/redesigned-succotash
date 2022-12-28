@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 function useFirstThursday(initialDate = { date: '', override: false }) {
   const [dateInfo, setDateInfo] = useState(initialDate);
 
+  // Ideally move this out of a useEffect.
   useEffect(() => {
     let cupYear = dayjs().year().toString();
     let overrideSwitch = false;

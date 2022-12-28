@@ -11,7 +11,7 @@ const initialInput = {
 };
 
 const defaultGolfer = {
-  id: 0,
+  id: -1,
   name: '',
   score: 0,
   date: '',
@@ -25,6 +25,7 @@ const defaultGolfer = {
 function Golfers() {
   const [golferInput, setGolferInput] = useState(initialInput);
   const [golfers, setGolfers] = useState([defaultGolfer]);
+  const [filteredGolfers, setFilteredGolfers] = useState([defaultGolfer]);
 
   useEffect(() => {
     setGolfers([...GolferData]);
@@ -33,6 +34,22 @@ function Golfers() {
   const handleGolferInput = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
     setGolferInput({ ...golferInput, [name]: value });
+
+    if (name === 'name') {
+      handlePrediction(value);
+    }
+  };
+
+  const handlePrediction = value => {
+    if (value.length > 0) {
+      let newGolfers = golfers.filter(golfer => {
+        let uniformName = golfer.name.toUpperCase();
+        let uniformValue = value.toUpperCase();
+        return uniformName.startsWith(uniformValue) ? golfer.name : '';
+      });
+
+      setFilteredGolfers([...newGolfers]);
+    }
   };
 
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
@@ -96,6 +113,7 @@ function Golfers() {
         submit={handleFormSubmit}
         input={handleGolferInput}
         info={golferInput}
+        golfers={filteredGolfers}
       />
     </div>
   );
