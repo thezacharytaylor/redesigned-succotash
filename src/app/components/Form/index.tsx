@@ -33,7 +33,7 @@ const Form = ({ submit, input, info, golfers }) => {
                 return (
                   <li key={index}>
                     <button
-                      className="p-2 bg-transparent border-0 hover:bg-gray-300"
+                      className="w-full p-2 text-left bg-transparent border-0 hover:bg-gray-300"
                       onClick={event => handleUpdate(event, golfer.name)}
                       name="name"
                       value={golfer.name}
