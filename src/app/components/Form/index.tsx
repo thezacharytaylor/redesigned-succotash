@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import Input from './Input';
 import { CSSTransition } from 'react-transition-group';
-import { useRef, useState } from 'react';
 
 const Form = ({ submit, input, info, golfers }) => {
   // const [valueState, setValueState] = useState(info.name);
