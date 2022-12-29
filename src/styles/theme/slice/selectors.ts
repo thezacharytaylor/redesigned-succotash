@@ -6,7 +6,16 @@ import { themes } from '../themes';
 import { isSystemDark } from '../utils';
 
 export const selectTheme = createSelector(
-  [(state: RootState) => state.theme || initialState],
+  [
+    (state: RootState) => {
+      if (state !== undefined) {
+        return state.theme || initialState;
+      } else {
+        return initialState;
+      }
+    },
+  ],
+
   theme => {
     if (theme.selected === 'system') {
       return isSystemDark ? themes.dark : themes.light;
