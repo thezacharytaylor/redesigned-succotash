@@ -5,6 +5,7 @@ export function Logo() {
   return (
     <Wrapper>
       <Title>Kinetic Cup</Title>
+      <Description>Fore!</Description>
     </Wrapper>
   );
 }

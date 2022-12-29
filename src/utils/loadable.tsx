@@ -6,7 +6,9 @@ interface Opts {
 type Unpromisify<T> = T extends Promise<infer P> ? P : never;
 
 export const lazyLoad = <
+  // eslint-disable-next-line
   T extends Promise<any>,
+  // eslint-disable-next-line
   U extends React.ComponentType<any>,
 >(
   importFunc: () => T,
@@ -23,6 +25,7 @@ export const lazyLoad = <
   const LazyComponent = lazy(lazyFactory);
 
   return (props: React.ComponentProps<U>): JSX.Element => (
+    // eslint-disable-next-line
     <Suspense fallback={opts.fallback!}>
       <LazyComponent {...props} />
     </Suspense>

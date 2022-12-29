@@ -5,6 +5,7 @@ import { ConvertedToObjectType, TranslationJsonType } from './types';
  * Your components can import this file in 'messages.ts' files which would ruin the HMR if this isn't a separate module
  */
 export const translations: ConvertedToObjectType<TranslationJsonType> =
+  // eslint-disable-next-line
   {} as any;
 
 /*
@@ -14,6 +15,7 @@ export const translations: ConvertedToObjectType<TranslationJsonType> =
  * along with type-safety
  */
 export const convertLanguageJsonToObject = (
+  // eslint-disable-next-line
   json: any,
   objToConvertTo = translations,
   current?: string,

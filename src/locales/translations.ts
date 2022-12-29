@@ -6,6 +6,7 @@ import { ConvertedToObjectType, TranslationJsonType } from './types';
  */
 
 export const translations: ConvertedToObjectType<TranslationJsonType> =
+  // eslint-disable-next-line
   {} as any;
 
 /*
@@ -15,6 +16,7 @@ export const translations: ConvertedToObjectType<TranslationJsonType> =
  * along with type-safety
  */
 export const convertLanguageJsonToObject = (
+  // eslint-disable-next-line
   json: any,
   objToConvertTo = translations,
   current?: string,

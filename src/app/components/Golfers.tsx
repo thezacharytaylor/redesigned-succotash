@@ -31,7 +31,9 @@ function Golfers() {
     setGolfers([...GolferData]);
   }, []);
 
-  const handleGolferInput = (event: { target: { name: any; value: any } }) => {
+  const handleGolferInput = (event: {
+    target: { name: string; value: string };
+  }) => {
     const { name, value } = event.target;
     setGolferInput({ ...golferInput, [name]: value });
 
@@ -42,9 +44,9 @@ function Golfers() {
 
   const handlePrediction = value => {
     if (value.length > 0) {
-      let newGolfers = golfers.filter(golfer => {
-        let uniformName = golfer.name.toUpperCase();
-        let uniformValue = value.toUpperCase();
+      const newGolfers = golfers.filter(golfer => {
+        const uniformName: string = golfer.name.toUpperCase();
+        const uniformValue: string = value.toUpperCase();
         return uniformName.startsWith(uniformValue) ? golfer.name : '';
       });
 

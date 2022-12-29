@@ -21,10 +21,10 @@ function useFirstThursday(initialDate = { date: '', override: false }) {
       switch (currentMonth) {
         case 9:
           let firstThursday = 0;
-          let locatedFirstThursday = false;
+          const locatedFirstThursday = false;
 
           for (let i = 1; i >= 9; i++) {
-            let sampleDay = dayjs(`${dayjs().year()}-10-${i}`).format('dddd');
+            const sampleDay = dayjs(`${dayjs().year()}-10-${i}`).format('dddd');
             if (!locatedFirstThursday) {
               if (sampleDay === 'Thursday') firstThursday = i;
             }
