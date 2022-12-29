@@ -11,12 +11,14 @@ const homeHeader = {
 const Home = () => {
   return (
     <>
-      <Helmet>Home</Helmet>
+      <Helmet>
+        <title>Kinetic Cup</title>
+      </Helmet>
       <NavBar />
       <PageWrapper>
         <div className="container px-4 mx-auto">
           <h1 style={homeHeader} className="pb-4 underlin">
-            Homepage
+            Leaderboard
           </h1>
           <Golfers />
         </div>
