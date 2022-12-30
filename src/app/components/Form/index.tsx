@@ -18,7 +18,7 @@ const Form = ({ submit, input, info, golfers }) => {
 
   return (
     <>
-      <form action="#" onSubmit={submit} className="relative flex">
+      <form action="#" onSubmit={submit} className="relative flex input-group">
         <Input name="name" placeholder="Name" value={info.name} func={input} />
         <div className="absolute bottom-0 w-full">
           <CSSTransition
@@ -48,7 +48,7 @@ const Form = ({ submit, input, info, golfers }) => {
         <Input name="score" placeholder={1} value={info.score} func={input} />
         <button
           type="submit"
-          className="px-4 text-lg text-white bg-gray-700 lg:text-2xl"
+          className="px-4 text-lg text-white bg-gray-700 lg:text-2xl btn"
         >
           +
         </button>

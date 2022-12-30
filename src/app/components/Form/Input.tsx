@@ -4,7 +4,9 @@ const Input = ({ name, placeholder, value, func }) => {
       <input
         name={name}
         type="text"
-        className={`border-gray-500 p-2 ${name === 'score' && 'sm:ml-6'}`}
+        className={`input input-bordered w-full max-w-xs ${
+          name === 'score' && 'max-w-[4rem]'
+        }`}
         placeholder={placeholder}
         value={value}
         onChange={func}

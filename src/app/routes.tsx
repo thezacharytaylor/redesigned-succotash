@@ -3,8 +3,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './views/pages/Home';
 // import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './pages/NotFoundPage/Loadable';
-import Leaderboard from './pages/Leaderboard';
+// import { NotFoundPage } from './pages/NotFoundPage/Loadable';
+import Leaderboard from './views/pages/Leaderboard';
 // import Dashboard from './layouts/dashboard';
 // import DashboardDefaultContent from './views/dashboard/dashboard-default-content-new';
 // import SettingsAndPrivacy from './views/dashboard/settings-and-privacy';
@@ -22,7 +22,7 @@ const AppRoutes = () => {
           children
         />
       </Route> */}
-      <Route path="*" element={<NotFoundPage />} />
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
 };

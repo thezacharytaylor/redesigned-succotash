@@ -15,15 +15,10 @@ import FontFaceObserver from 'fontfaceobserver';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
-
 import { App } from 'app';
-
 import { HelmetProvider } from 'react-helmet-async';
-
 import { configureAppStore } from 'store/configureStore';
-
-import { ThemeProvider } from 'styles/theme/ThemeProvider';
-
+// import { ThemeProvider } from 'styles/theme/ThemeProvider';
 import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
@@ -45,13 +40,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <ThemeProvider>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </ThemeProvider>
+    {/* <ThemeProvider> */}
+    <HelmetProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </HelmetProvider>
+    {/* </ThemeProvider> */}
   </Provider>,
 );
 
