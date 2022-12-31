@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+// import { getEvents } from 'features/calendar/calendarSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setName, setScore } from 'features/golfer-input/inputSlice';
+import { RootState } from 'store/reducers';
 import LeaderBoard from './Leaderboard';
 import Form from './Form';
 import dayjs from 'dayjs';
@@ -22,7 +26,9 @@ const defaultGolfer = {
   previousPlayer: false,
 };
 
-function Golfers() {
+const Golfers = () => {
+  const input = useSelector(state => state.golferInput);
+  const disptach = useDispatch();
   const [golferInput, setGolferInput] = useState(initialInput);
   const [golfers, setGolfers] = useState([defaultGolfer]);
   const [filteredGolfers, setFilteredGolfers] = useState([defaultGolfer]);
@@ -120,6 +126,6 @@ function Golfers() {
       />
     </div>
   );
-}
+};
 
 export default Golfers;

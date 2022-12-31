@@ -2,12 +2,13 @@
  * Combine all reducers in this file and export the combined reducers.
  * combineReducers - turns an object whose values are different reducer functions into a single reducer function.
  */
-
 import { combineReducers } from '@reduxjs/toolkit';
+import golferInputReducer from 'features/golfer-input/inputSlice';
 
 /*  injectedReducers - an easier way of registering a reducer */
 const injectedReducers = {
   //reducers here to be added one by one.
+  golferInput: golferInputReducer,
 };
 /* combineReducers requires an object.we're using the spread operator (...injectedReducers) to spread out all the Reducers */
 const rootReducer = combineReducers({ ...injectedReducers });
