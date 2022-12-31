@@ -27,12 +27,14 @@ const Form = ({ submit, input, info, golfers }) => {
             classNames="slide-vertical"
             unmountOnExit
           >
-            <ul className={`absolute bg-white`}>
+            <ul
+              className={`absolute bg-white drop-shadow-xl hover:drop-shadow-2xl`}
+            >
               {golfers.map((golfer, index) => {
                 return (
                   <li key={index}>
                     <button
-                      className="w-full p-2 text-left bg-transparent border-0 hover:bg-gray-300"
+                      className="w-full p-2 text-left text-gray-800 bg-transparent border-0 hover:bg-gray-300"
                       onClick={event => handleUpdate(event, golfer.name)}
                       name="name"
                       value={golfer.name}

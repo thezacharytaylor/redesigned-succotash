@@ -103,7 +103,7 @@ function Golfers() {
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <h2 className="mb-4 text-lg font-bold text-gray-700">
+      <h2 className="mb-4 text-lg font-bold text-gray-800">
         <YearDisplay> Individual Qualifying High Scores</YearDisplay>
       </h2>
       <LeaderBoard
@@ -111,6 +111,7 @@ function Golfers() {
         players={golfers}
       />
       <hr className="my-4 border-gray-800 border-solid" />
+      <h2 className="mb-4 text-lg font-bold text-gray-800">Add Score</h2>
       <Form
         submit={handleFormSubmit}
         input={handleGolferInput}
