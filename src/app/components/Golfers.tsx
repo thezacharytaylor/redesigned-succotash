@@ -103,7 +103,7 @@ function Golfers() {
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <h2 className="mb-4 text-lg font-bold">
+      <h2 className="mb-4 text-lg font-bold text-gray-700">
         <YearDisplay> Individual Qualifying High Scores</YearDisplay>
       </h2>
       <LeaderBoard
