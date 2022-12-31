@@ -1,4 +1,10 @@
-const Input = ({ name, placeholder, value, func }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/reducers';
+
+const Input = ({ name, placeholder, func }) => {
+  const playerInput = useSelector((state: RootState) => state.golferInput);
+  const dispatch = useDispatch();
+
   return (
     <>
       <input
@@ -8,7 +14,7 @@ const Input = ({ name, placeholder, value, func }) => {
           name === 'score' && 'max-w-[4rem]'
         }`}
         placeholder={placeholder}
-        value={value}
+        value={playerInput[name]}
         onChange={func}
       />
     </>

@@ -18,7 +18,7 @@ interface GolferInputState {
 
 const initialState: GolferInputState = {
   name: '',
-  score: -1,
+  score: 0,
 };
 
 const golferInputNamespace = 'golferInput';

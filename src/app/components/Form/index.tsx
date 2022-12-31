@@ -1,28 +1,71 @@
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setName, setScore } from 'features/golfer-input/inputSlice';
+import { RootState } from 'store/reducers';
 import Input from './Input';
 import { CSSTransition } from 'react-transition-group';
+import { useState } from 'react';
 
-const Form = ({ submit, input, info, golfers }) => {
-  // const [valueState, setValueState] = useState(info.name);
+const defaultGolfer = {
+  id: -1,
+  name: '',
+  score: 0,
+  date: '',
+  inCup: false,
+  qualified: false,
+  checkedIn: false,
+  seed: 16,
+  previousPlayer: false,
+};
+
+const Form = ({ submit, golfers }) => {
+  const playerInput = useSelector((state: RootState) => state.golferInput);
+  const dispatch = useDispatch();
+  const [filteredGolfers, setFilteredGolfers] = useState([defaultGolfer]);
 
   const handleUpdate = (event, golferName) => {
     event.preventDefault();
-    // nameField = golfer.name;
-    // console.log(nameField);
-    // if (nameField.current !== undefined) {
-    //   // nameField.current = golferName;
-    //   console.log(nameField.current);
-    // }
-    // return <p className="absolute px-2 bg-white">Hi yea</p>;
+    dispatch(setName(event.target.value));
+  };
+
+  const handlePlayerInput = (event: {
+    target: { name: string; value: any };
+  }) => {
+    const { name, value } = event.target;
+
+    switch (event.target.name) {
+      case 'name':
+        dispatch(setName(value));
+        break;
+      default:
+        dispatch(setScore(value));
+        break;
+    }
+
+    if (name === 'name') {
+      handlePrediction(value);
+    }
+  };
+
+  const handlePrediction = value => {
+    if (value.length > 0) {
+      const newGolfers = golfers.filter(golfer => {
+        const uniformName: string = golfer.name.toUpperCase();
+        const uniformValue: string = value.toUpperCase();
+        return uniformName.startsWith(uniformValue) ? golfer.name : '';
+      });
+
+      setFilteredGolfers([...newGolfers]);
+    }
   };
 
   return (
     <>
       <form action="#" onSubmit={submit} className="relative flex input-group">
-        <Input name="name" placeholder="Name" value={info.name} func={input} />
+        <Input name="name" placeholder="Name" func={handlePlayerInput} />
         <div className="absolute bottom-0 w-full">
           <CSSTransition
-            in={info.name.length > 0 && golfers.length > 0}
+            in={playerInput.name.length > 0 && golfers.length > 0}
             timeout={300}
             classNames="slide-vertical"
             unmountOnExit
@@ -30,7 +73,7 @@ const Form = ({ submit, input, info, golfers }) => {
             <ul
               className={`absolute bg-white drop-shadow-xl hover:drop-shadow-2xl`}
             >
-              {golfers.map((golfer, index) => {
+              {filteredGolfers.map((golfer, index) => {
                 return (
                   <li key={index}>
                     <button
@@ -47,7 +90,7 @@ const Form = ({ submit, input, info, golfers }) => {
             </ul>
           </CSSTransition>
         </div>
-        <Input name="score" placeholder={1} value={info.score} func={input} />
+        <Input name="score" placeholder={1} func={handlePlayerInput} />
         <button
           type="submit"
           className="px-4 text-lg text-white bg-gray-700 lg:text-2xl btn"

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { getEvents } from 'features/calendar/calendarSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setScore } from 'features/golfer-input/inputSlice';
 import { RootState } from 'store/reducers';
@@ -8,11 +7,6 @@ import Form from './Form';
 import dayjs from 'dayjs';
 import GolferData from '../../store/golfers.json';
 import YearDisplay from './YearDisplay';
-
-const initialInput = {
-  name: '',
-  score: 1,
-};
 
 const defaultGolfer = {
   id: -1,
@@ -27,53 +21,30 @@ const defaultGolfer = {
 };
 
 const Golfers = () => {
-  const input = useSelector(state => state.golferInput);
-  const disptach = useDispatch();
-  const [golferInput, setGolferInput] = useState(initialInput);
+  const playerInput = useSelector((state: RootState) => state.golferInput);
+  const dispatch = useDispatch();
   const [golfers, setGolfers] = useState([defaultGolfer]);
-  const [filteredGolfers, setFilteredGolfers] = useState([defaultGolfer]);
 
   useEffect(() => {
     setGolfers([...GolferData]);
   }, []);
 
-  const handleGolferInput = (event: {
-    target: { name: string; value: string };
-  }) => {
-    const { name, value } = event.target;
-    setGolferInput({ ...golferInput, [name]: value });
-
-    if (name === 'name') {
-      handlePrediction(value);
-    }
-  };
-
-  const handlePrediction = value => {
-    if (value.length > 0) {
-      const newGolfers = golfers.filter(golfer => {
-        const uniformName: string = golfer.name.toUpperCase();
-        const uniformValue: string = value.toUpperCase();
-        return uniformName.startsWith(uniformValue) ? golfer.name : '';
-      });
-
-      setFilteredGolfers([...newGolfers]);
-    }
-  };
-
+  // TODO: Move to form when golfers moved to store
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const updatedGolfer = updateGolfer();
+    const updatedPlayer = updatePlayer();
 
-    if (!updatedGolfer) {
+    if (!updatedPlayer) {
       addGolfer();
     }
   };
 
-  const updateGolfer = () => {
+  // TODO: To Store
+  const updatePlayer = () => {
     let locatedGolfer = false;
     const updatedGolfers = golfers.map(golfer => {
-      if (golfer.name === golferInput.name) {
-        golfer.score = golferInput.score;
+      if (golfer.name === playerInput.name) {
+        golfer.score = playerInput.score;
         golfer.date = dayjs().format('MM/DD/YYYY');
         locatedGolfer = true;
       }
@@ -85,14 +56,14 @@ const Golfers = () => {
     return locatedGolfer;
   };
 
-  // This might need to be a custom hook
+  // TODO: To Store
   const addGolfer = () => {
     setGolfers([
       ...golfers,
       {
         id: golfers[golfers.length - 1].id + 1,
-        name: golferInput.name,
-        score: golferInput.score,
+        name: playerInput.name,
+        score: playerInput.score,
         date: dayjs().format('MM/DD/YYYY'),
         inCup: true,
         qualified: true,
@@ -102,9 +73,11 @@ const Golfers = () => {
       },
     ]);
 
-    setGolferInput({ name: '', score: 1 });
+    dispatch(setName(''));
+    dispatch(setScore(0));
   };
 
+  // To Store
   // const deleteGolfer = id => {};
 
   return (
@@ -118,12 +91,7 @@ const Golfers = () => {
       />
       <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold text-gray-800">Add Score</h2>
-      <Form
-        submit={handleFormSubmit}
-        input={handleGolferInput}
-        info={golferInput}
-        golfers={filteredGolfers}
-      />
+      <Form submit={handleFormSubmit} golfers={golfers} />
     </div>
   );
 };
