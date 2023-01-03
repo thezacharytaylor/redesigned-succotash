@@ -6,7 +6,6 @@ import LeaderBoard from './Leaderboard';
 import Form from './Form';
 import dayjs from 'dayjs';
 import PlayerData from '../../store/golfers.json';
-import YearDisplay from './YearDisplay';
 
 const defaultPlayer = {
   id: -1,
@@ -82,9 +81,6 @@ const Players = () => {
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
-      <h2 className="mb-4 text-lg font-bold text-gray-800">
-        <YearDisplay> Individual Qualifying High Scores</YearDisplay>
-      </h2>
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
         players={players}
