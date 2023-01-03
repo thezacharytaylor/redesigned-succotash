@@ -2,8 +2,10 @@ import YearDisplay from '../YearDisplay';
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
+const defaultRefArray: (HTMLButtonElement | null)[] = [];
+
 const Leaderboard = ({ headings, players }) => {
-  const buttonRefs = useRef([]);
+  const buttonRefs = useRef(defaultRefArray);
   const identifer = 3;
   const rows = ['index', 'name', 'score', 'date'];
 
@@ -54,7 +56,12 @@ const Leaderboard = ({ headings, players }) => {
                 >
                   {rows.map((row, rowIndex) => (
                     <td className={`${rowIndex === 0 ? 'pl-6' : ''}`}>
-                      <button className="p-0 bg-transparent border-none cursor-default">
+                      <button
+                        className="p-0 bg-transparent border-none cursor-default"
+                        ref={elementRef => {
+                          buttonRefs.current.push(elementRef);
+                        }}
+                      >
                         {rowIndex === 0 ? index + 1 : player[row]}
                       </button>
                     </td>
