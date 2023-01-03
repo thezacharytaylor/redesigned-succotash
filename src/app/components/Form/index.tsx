@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { setName, setScore } from 'features/golfer-input/inputSlice';
+import { setName, setScore } from 'features/player-input/inputSlice';
 import { RootState } from 'store/reducers';
 import Input from './Input';
 import { CSSTransition } from 'react-transition-group';
 import { useState } from 'react';
 
-const defaultGolfer = {
+const defaultPlayer = {
   id: -1,
   name: '',
   score: 0,
@@ -18,12 +18,12 @@ const defaultGolfer = {
   previousPlayer: false,
 };
 
-const Form = ({ submit, golfers }) => {
-  const playerInput = useSelector((state: RootState) => state.golferInput);
+const Form = ({ submit, players }) => {
+  const playerInput = useSelector((state: RootState) => state.playerInput);
   const dispatch = useDispatch();
-  const [filteredGolfers, setFilteredGolfers] = useState([defaultGolfer]);
+  const [filteredPlayers, setFilteredPlayers] = useState([defaultPlayer]);
 
-  const handleUpdate = (event, golferName) => {
+  const handleUpdate = event => {
     event.preventDefault();
     dispatch(setName(event.target.value));
   };
@@ -49,13 +49,14 @@ const Form = ({ submit, golfers }) => {
 
   const handlePrediction = value => {
     if (value.length > 0) {
-      const newGolfers = golfers.filter(golfer => {
-        const uniformName: string = golfer.name.toUpperCase();
+      const newPlayers = players.filter(player => {
+        const uniformName: string = player.name.toUpperCase();
         const uniformValue: string = value.toUpperCase();
-        return uniformName.startsWith(uniformValue) ? golfer.name : '';
+
+        return uniformName.startsWith(uniformValue) ? player.name : '';
       });
 
-      setFilteredGolfers([...newGolfers]);
+      setFilteredPlayers([...newPlayers]);
     }
   };
 
@@ -65,24 +66,22 @@ const Form = ({ submit, golfers }) => {
         <Input name="name" placeholder="Name" func={handlePlayerInput} />
         <div className="absolute bottom-0 w-full">
           <CSSTransition
-            in={playerInput.name.length > 0 && golfers.length > 0}
+            in={playerInput.name.length > 0 && players.length > 0}
             timeout={300}
             classNames="slide-vertical"
             unmountOnExit
           >
-            <ul
-              className={`absolute bg-white drop-shadow-xl hover:drop-shadow-2xl`}
-            >
-              {filteredGolfers.map((golfer, index) => {
+            <ul className={`absolute drop-shadow-xl hover:drop-shadow-2xl`}>
+              {filteredPlayers.map((player, index) => {
                 return (
                   <li key={index}>
                     <button
-                      className="w-full p-2 text-left text-gray-800 bg-transparent border-0 hover:bg-gray-300"
-                      onClick={event => handleUpdate(event, golfer.name)}
+                      className="w-full p-2 text-left text-gray-800 bg-gray-100 border-0 hover:bg-gray-300"
+                      onClick={event => handleUpdate(event)}
                       name="name"
-                      value={golfer.name}
+                      value={player.name}
                     >
-                      {golfer.name}
+                      {player.name}
                     </button>
                   </li>
                 );
@@ -104,11 +103,7 @@ const Form = ({ submit, golfers }) => {
 
 Form.Props = {
   submit: PropTypes.func,
-  input: PropTypes.func,
-  info: PropTypes.shape({
-    name: PropTypes.string,
-    score: PropTypes.number,
-  }),
+  players: PropTypes.array,
 };
 
 export default Form;

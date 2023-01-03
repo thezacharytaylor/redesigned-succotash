@@ -1,5 +1,5 @@
 import React from 'react';
-import Golfers from 'app/components/Golfers';
+import Players from 'app/components/Players';
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
@@ -20,7 +20,7 @@ const Home = () => {
           <h1 style={homeHeader} className="pb-4 underlin">
             Leaderboard
           </h1>
-          <Golfers />
+          <Players />
         </div>
       </PageWrapper>
     </>

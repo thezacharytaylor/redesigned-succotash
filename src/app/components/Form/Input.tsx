@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 
 const Input = ({ name, placeholder, func }) => {
-  const playerInput = useSelector((state: RootState) => state.golferInput);
-  const dispatch = useDispatch();
+  const playerInput = useSelector((state: RootState) => state.playerInput);
 
   return (
     <>

@@ -17,15 +17,15 @@ const Leaderboard = ({ headings, players }) => {
         <tbody>
           {players
             .sort((a, b) => b.score - a.score)
-            .map((golfer, index) => (
+            .map((player, index) => (
               <tr
                 key={index}
                 className={index % 2 === 0 ? 'bg-green-100' : 'bg-green-300'}
               >
                 <td className="pl-6">{index + 1}</td>
-                <td>{golfer.name}</td>
-                <td>{golfer.score}</td>
-                <td>{golfer.date}</td>
+                <td>{player.name}</td>
+                <td>{player.score}</td>
+                <td>{player.date}</td>
               </tr>
             ))}
         </tbody>

@@ -6,27 +6,27 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import { RootState } from 'store/reducers';
-import { GolferInput } from 'app/models/golfer-input-type';
+// import { PlayerInput } from 'app/models/player-input-type';
 // import axios, { EndPoints } from 'api/axios';
 
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;
 
-interface GolferInputState {
+interface PlayerInputState {
   name: string;
   score: number;
 }
 
-const initialState: GolferInputState = {
+const initialState: PlayerInputState = {
   name: '',
   score: 0,
 };
 
-const golferInputNamespace = 'golferInput';
+const playerInputNamespace = 'playerInput';
 
 /*Single-File implementation of Redux-Toolkit*/
 const slice = createSlice({
   /*namespace for separating related states. Namespaces are like modules*/
-  name: golferInputNamespace,
+  name: playerInputNamespace,
 
   /*initialState is the default value of this namespace/module and it is required.*/
   initialState, // same as initialState: initialState

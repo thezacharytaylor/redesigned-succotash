@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setName, setScore } from 'features/golfer-input/inputSlice';
+import { setName, setScore } from 'features/player-input/inputSlice';
 import { RootState } from 'store/reducers';
 import LeaderBoard from './Leaderboard';
 import Form from './Form';
 import dayjs from 'dayjs';
-import GolferData from '../../store/golfers.json';
+import PlayerData from '../../store/golfers.json';
 import YearDisplay from './YearDisplay';
 
-const defaultGolfer = {
+const defaultPlayer = {
   id: -1,
   name: '',
   score: 0,
@@ -20,48 +20,48 @@ const defaultGolfer = {
   previousPlayer: false,
 };
 
-const Golfers = () => {
-  const playerInput = useSelector((state: RootState) => state.golferInput);
+const Players = () => {
+  const playerInput = useSelector((state: RootState) => state.playerInput);
   const dispatch = useDispatch();
-  const [golfers, setGolfers] = useState([defaultGolfer]);
+  const [players, setPlayers] = useState([defaultPlayer]);
 
   useEffect(() => {
-    setGolfers([...GolferData]);
+    setPlayers([...PlayerData]);
   }, []);
 
-  // TODO: Move to form when golfers moved to store
+  // TODO: Move to form when players moved to store
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const updatedPlayer = updatePlayer();
 
     if (!updatedPlayer) {
-      addGolfer();
+      addPlayer();
     }
   };
 
   // TODO: To Store
   const updatePlayer = () => {
-    let locatedGolfer = false;
-    const updatedGolfers = golfers.map(golfer => {
+    let locatedPlayer = false;
+    const updatedPlayers = players.map(golfer => {
       if (golfer.name === playerInput.name) {
         golfer.score = playerInput.score;
         golfer.date = dayjs().format('MM/DD/YYYY');
-        locatedGolfer = true;
+        locatedPlayer = true;
       }
 
       return golfer;
     });
 
-    setGolfers(updatedGolfers);
-    return locatedGolfer;
+    setPlayers(updatedPlayers);
+    return locatedPlayer;
   };
 
   // TODO: To Store
-  const addGolfer = () => {
-    setGolfers([
-      ...golfers,
+  const addPlayer = () => {
+    setPlayers([
+      ...players,
       {
-        id: golfers[golfers.length - 1].id + 1,
+        id: players[players.length - 1].id + 1,
         name: playerInput.name,
         score: playerInput.score,
         date: dayjs().format('MM/DD/YYYY'),
@@ -78,7 +78,7 @@ const Golfers = () => {
   };
 
   // To Store
-  // const deleteGolfer = id => {};
+  // const deletePlayer = id => {};
 
   return (
     <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
@@ -87,13 +87,13 @@ const Golfers = () => {
       </h2>
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
-        players={golfers}
+        players={players}
       />
       <hr className="my-4 border-gray-800 border-solid" />
       <h2 className="mb-4 text-lg font-bold text-gray-800">Add Score</h2>
-      <Form submit={handleFormSubmit} golfers={golfers} />
+      <Form submit={handleFormSubmit} players={players} />
     </div>
   );
 };
 
-export default Golfers;
+export default Players;
