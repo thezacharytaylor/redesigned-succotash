@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
-import Golfers from 'app/components/Players';
+import Players from 'app/components/Players';
 
 const Leaderboard = () => {
   return (
@@ -10,7 +10,7 @@ const Leaderboard = () => {
       <Helmet>Leaderboard</Helmet>
       <NavBar />
       <PageWrapper>
-        <Golfers />
+        <Players />
       </PageWrapper>
     </>
   );

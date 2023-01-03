@@ -26,6 +26,7 @@ const Form = ({ submit, players }) => {
   const handleUpdate = event => {
     event.preventDefault();
     dispatch(setName(event.target.value));
+    setFilteredPlayers([]);
   };
 
   const handlePlayerInput = (event: {
@@ -52,8 +53,14 @@ const Form = ({ submit, players }) => {
       const newPlayers = players.filter(player => {
         const uniformName: string = player.name.toUpperCase();
         const uniformValue: string = value.toUpperCase();
-
-        return uniformName.startsWith(uniformValue) ? player.name : '';
+        if (
+          uniformName.startsWith(uniformValue) &&
+          uniformValue !== uniformName
+        ) {
+          return player.name;
+        } else {
+          return '';
+        }
       });
 
       setFilteredPlayers([...newPlayers]);
