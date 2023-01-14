@@ -3,17 +3,16 @@ import React from 'react';
 const Row = ({ index, rows, buttonRefFunc, player }) => {
   return (
     <>
-      <tr
-        key={index}
-        className={index % 2 === 0 ? 'bg-green-100' : 'bg-green-300'}
-      >
+      <tr key={index}>
         {rows.map((row, rowIndex) => (
           <td
             key={index + rowIndex}
-            className={`${rowIndex === 0 ? 'pl-6' : ''}`}
+            className={`${rowIndex === 0 ? 'pl-6' : ''} ${
+              index % 2 === 0 ? '!bg-green-700' : '!bg-green-900'
+            }`}
           >
             <button
-              className="p-0 bg-transparent border-none cursor-default"
+              className="p-0 text-white bg-transparent border-none cursor-default"
               ref={elementRef => {
                 buttonRefFunc(elementRef);
               }}

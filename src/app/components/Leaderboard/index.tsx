@@ -18,15 +18,11 @@ const Leaderboard = ({ headings, players }) => {
     return (
       <>
         {index === 16 && (
-          <tr key="cutoff" className="bg-red-700">
+          <tr key="cutoff">
             <td className="bg-red-700"></td>
-            <td className="bg-red-700">
-              <div className="p-0 bg-transparent border-none cursor-default">
-                Cut Off
-              </div>
-            </td>
+            <td className="text-white bg-red-700">Cut Off</td>
             <td className="bg-red-700"></td>
-            <td className="bg-red-700">Cut Off</td>
+            <td className="text-white bg-red-700">Cut Off</td>
           </tr>
         )}
       </>
@@ -56,7 +52,9 @@ const Leaderboard = ({ headings, players }) => {
               {headings.map((heading, index) => (
                 <th
                   key={index}
-                  className={index === 1 ? 'text-left' : ''}
+                  className={`${
+                    index === 1 ? 'text-left' : ''
+                  } !bg-green-900 text-white`}
                   scope="col"
                 >
                   {heading}
