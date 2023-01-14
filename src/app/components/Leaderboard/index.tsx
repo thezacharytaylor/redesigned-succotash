@@ -19,10 +19,10 @@ const Leaderboard = ({ headings, players }) => {
       <>
         {index === 16 && (
           <tr key="cutoff">
-            <td className="bg-red-700"></td>
-            <td className="text-white bg-red-700">Cut Off</td>
-            <td className="bg-red-700"></td>
-            <td className="text-white bg-red-700">Cut Off</td>
+            <td className="bg-red-800"></td>
+            <td className="text-white bg-red-800">Cutline - Top 16</td>
+            <td className="bg-red-800"></td>
+            <td className="text-white bg-red-800">Cutline - Top 16</td>
           </tr>
         )}
       </>
