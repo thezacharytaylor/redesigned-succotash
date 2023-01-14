@@ -13,9 +13,8 @@ const Leaderboard = ({ headings, players }) => {
     buttonRefs.current.push(button);
   };
 
+  // TODO: Add something to disable this, say for all time leaderboard
   const insertCutOff = index => {
-    console.log(index === 15);
-
     return (
       <>
         {index === 16 && (
