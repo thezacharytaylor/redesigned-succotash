@@ -1,19 +1,38 @@
 import YearDisplay from '../YearDisplay';
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
+import Row from './Row';
 
 const defaultRefArray: (HTMLButtonElement | null)[] = [];
 
 const Leaderboard = ({ headings, players }) => {
   const buttonRefs = useRef(defaultRefArray);
-  const identifer = 3;
   const rows = ['index', 'name', 'score', 'date'];
 
-  {
-    /* useEffect(() => {
-    buttonRefs.current = [''];
-  }, []); */
-  }
+  const buttonRefLoad = button => {
+    buttonRefs.current.push(button);
+  };
+
+  const insertCutOff = index => {
+    console.log(index === 15);
+
+    return (
+      <>
+        {index === 16 && (
+          <tr key="cutoff" className="bg-red-700">
+            <td className="bg-red-700"></td>
+            <td className="bg-red-700">
+              <div className="p-0 bg-transparent border-none cursor-default">
+                Cut Off
+              </div>
+            </td>
+            <td className="bg-red-700"></td>
+            <td className="bg-red-700">Cut Off</td>
+          </tr>
+        )}
+      </>
+    );
+  };
 
   const handleKeyUp = event => {
     //
@@ -49,25 +68,20 @@ const Leaderboard = ({ headings, players }) => {
           <tbody>
             {players
               .sort((a, b) => b.score - a.score)
-              .map((player, index) => (
-                <tr
-                  key={index}
-                  className={index % 2 === 0 ? 'bg-green-100' : 'bg-green-300'}
-                >
-                  {rows.map((row, rowIndex) => (
-                    <td className={`${rowIndex === 0 ? 'pl-6' : ''}`}>
-                      <button
-                        className="p-0 bg-transparent border-none cursor-default"
-                        ref={elementRef => {
-                          buttonRefs.current.push(elementRef);
-                        }}
-                      >
-                        {rowIndex === 0 ? index + 1 : player[row]}
-                      </button>
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              .map((player, index) => {
+                return (
+                  <>
+                    {insertCutOff(index)}
+                    <Row
+                      key={index}
+                      index={index}
+                      rows={rows}
+                      buttonRefFunc={buttonRefLoad}
+                      player={player}
+                    />
+                  </>
+                );
+              })}
           </tbody>
         </table>
       </div>
