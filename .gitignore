@@ -31,3 +31,4 @@ generated-cra-app
 .cra-template-rb
 template
 .eslintcache
+public/old
