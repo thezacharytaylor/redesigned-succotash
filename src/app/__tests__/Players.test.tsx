@@ -1,9 +1,16 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import renderer from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
-import Players from 'app/components/Players';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { configureAppStore } from 'store/configureStore';
+
+import Players from 'app/components/Players';
+import { render } from '@testing-library/react';
 
 const store = configureAppStore();
 const user = userEvent.setup();
@@ -25,14 +32,15 @@ describe('Load app', () => {
 
 describe('Add player', () => {
   test('Should add fake player to leaderboard', () => {
-    const domTree = renderer
-      .create(
+    act(() => {
+      render(
         <Provider store={store}>
           <HelmetProvider>
             <Players />
           </HelmetProvider>
         </Provider>,
-      )
-      .toJSON();
+      );
+    });
+    // TODO: Setup addition then checking to confirm
   });
 });
