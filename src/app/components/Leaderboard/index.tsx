@@ -34,8 +34,48 @@ const Leaderboard = ({ headings, players }) => {
   // const firstFocusedItemDate = datesArray[0];
   // const [focusedDate, setFocusedDate] = useState(firstFocusedItemDate);
   // const buttonRefs = useRef([]);
+
+  const handleKeyDown = event => {
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'ArrowDown':
+        event.preventDefault();
+        break;
+    }
+  };
+
   const handleKeyUp = event => {
-    // TODO: Build function
+    const currentIndex = datesArray.indexOf(event.target.dataset.date);
+
+    if (event.key === 'ArrowRight') {
+      if (currentIndex >= datesArray.length - 1) {
+        focusDayByIndex(0);
+      } else {
+        focusDayByIndex(currentIndex + 1);
+      }
+    } else if (event.key === 'ArrowLeft') {
+      if (currentIndex === 0) {
+        focusDayByIndex(datesArray.length - 1);
+      } else {
+        focusDayByIndex(currentIndex - 1);
+      }
+    } else if (event.key === 'ArrowDown') {
+      if (currentIndex + 7 <= datesArray.length - 1) {
+        focusDayByIndex(currentIndex + 7);
+      } else {
+        focusDayByIndex(datesArray.length - 1);
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (currentIndex - 7 > 0) {
+        focusDayByIndex(currentIndex - 7);
+      } else {
+        focusDayByIndex(0);
+      }
+    }
+  };
+
+  const focusDayByIndex = index => {
+    buttonRefs.current[index].focus();
   };
 
   return (
