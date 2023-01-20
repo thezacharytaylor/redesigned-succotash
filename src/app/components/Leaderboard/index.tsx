@@ -30,7 +30,7 @@ const Leaderboard = ({ headings, players }) => {
   };
 
   const handleKeyUp = event => {
-    //
+    // TODO: Build function
   };
 
   return (
