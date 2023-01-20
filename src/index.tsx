@@ -40,13 +40,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    {/* <ThemeProvider> */}
     <HelmetProvider>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </HelmetProvider>
-    {/* </ThemeProvider> */}
   </Provider>,
 );
 
