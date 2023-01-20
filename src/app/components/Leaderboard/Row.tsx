@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Row = ({ index, rows, buttonRefFunc, player }) => {
   return (
     <>
