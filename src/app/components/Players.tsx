@@ -29,6 +29,9 @@ const Players = () => {
   }, []);
 
   // TODO: Move to form when players moved to store
+  // TODO: Make Slice
+  // TODO: Make/Add reducer
+  // TODO: Cleanup code
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const updatedPlayer = updatePlayer();
