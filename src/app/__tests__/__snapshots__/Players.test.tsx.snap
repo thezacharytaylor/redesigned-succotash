@@ -1,5 +1,139 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Load app should render and match the snapshot 1`] = `
+<div
+  className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50"
+>
+  <h2
+    className="mb-4 text-lg font-bold text-gray-800"
+    id="leaderboard-header"
+  >
+      Individual Qualifying High Scores
+  </h2>
+  <div
+    className="overflow-x-auto"
+  >
+    <table
+      aria-labelledby="leaderboard-header"
+      className="table w-full table-zebra"
+      role="grid"
+    >
+      <thead>
+        <tr>
+          <th
+            className=" !bg-green-900 text-white"
+            scope="col"
+          >
+            Rank
+          </th>
+          <th
+            className="text-left !bg-green-900 text-white"
+            scope="col"
+          >
+            Name
+          </th>
+          <th
+            className=" !bg-green-900 text-white"
+            scope="col"
+          >
+            Score
+          </th>
+          <th
+            className=" !bg-green-900 text-white"
+            scope="col"
+          >
+            Date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            className="pl-6 !bg-green-700"
+          >
+            <div
+              className="p-0 text-white bg-transparent border-none cursor-default"
+              role="note"
+              tabIndex={0}
+            >
+              1
+            </div>
+          </td>
+          <td
+            className=" !bg-green-700"
+          >
+            <div
+              className="p-0 text-white bg-transparent border-none cursor-default"
+              role="note"
+              tabIndex={0}
+            />
+          </td>
+          <td
+            className=" !bg-green-700"
+          >
+            <div
+              className="p-0 text-white bg-transparent border-none cursor-default"
+              role="note"
+              tabIndex={0}
+            >
+              0
+            </div>
+          </td>
+          <td
+            className=" !bg-green-700"
+          >
+            <div
+              className="p-0 text-white bg-transparent border-none cursor-default"
+              role="note"
+              tabIndex={0}
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr
+    className="my-4 border-gray-800 border-solid"
+  />
+  <h2
+    className="mb-4 text-lg font-bold text-gray-800"
+  >
+    Add Score
+  </h2>
+  <form
+    action="#"
+    className="relative flex input-group"
+    onSubmit={[Function]}
+  >
+    <input
+      className="input input-bordered w-full max-w-xs false"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+      value=""
+    />
+    <div
+      className="absolute bottom-0 w-full"
+    />
+    <input
+      className="input input-bordered w-full max-w-xs max-w-[4rem]"
+      name="score"
+      onChange={[Function]}
+      placeholder={1}
+      type="text"
+      value={0}
+    />
+    <button
+      className="px-4 text-lg text-white bg-gray-700 lg:text-2xl btn"
+      type="submit"
+    >
+      +
+    </button>
+  </form>
+</div>
+`;
+
 exports[`should render and match the snapshot 1`] = `
 <div
   className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50"
