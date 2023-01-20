@@ -1,6 +1,6 @@
 import YearDisplay from '../YearDisplay';
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Row from './Row';
 
 const defaultRefArray: (HTMLButtonElement | null)[] = [];
