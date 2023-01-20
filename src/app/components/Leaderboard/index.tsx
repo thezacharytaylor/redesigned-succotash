@@ -29,6 +29,11 @@ const Leaderboard = ({ headings, players }) => {
     );
   };
 
+  // TODO: Resolve these variables
+  // Roving tabIndex
+  // const firstFocusedItemDate = datesArray[0];
+  // const [focusedDate, setFocusedDate] = useState(firstFocusedItemDate);
+  // const buttonRefs = useRef([]);
   const handleKeyUp = event => {
     // TODO: Build function
   };
