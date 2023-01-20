@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { NavBar } from 'app/components/NavBar';
 import { App } from '../index';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
