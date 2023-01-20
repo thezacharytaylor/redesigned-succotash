@@ -22,16 +22,5 @@ test('should render and match header text', () => {
       </Provider>,
     )
     .toJSON();
-  // render(
-  //   <Provider store={store}>
-  //     <HelmetProvider>
-  //       <React.StrictMode>
-  //         <App />
-  //       </React.StrictMode>
-  //     </HelmetProvider>
-  //   </Provider>,
-  // );
-  // const headerElement = screen.getByText(/kinetic cup/i);
-  // expect(headerElement).toBeInTheDocument();
   expect(domTree).toMatchSnapshot();
 });
