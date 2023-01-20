@@ -18,6 +18,6 @@ test('should render and match the snapshot', () => {
       </HelmetProvider>
     </Provider>,
   );
-  const headerElement = screen.getByText('Kinetic Cup');
+  const headerElement = screen.getByText(/kinetic cup/i);
   expect(headerElement).toBeInTheDocument();
 });
