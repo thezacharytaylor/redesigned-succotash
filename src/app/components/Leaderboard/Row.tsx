@@ -9,14 +9,16 @@ const Row = ({ index, rows, buttonRefFunc, player }) => {
               index % 2 === 0 ? '!bg-green-700' : '!bg-green-900'
             }`}
           >
-            <button
+            <div
               className="p-0 text-white bg-transparent border-none cursor-default"
+              role="note"
+              tabIndex={0}
               ref={elementRef => {
                 buttonRefFunc(elementRef);
               }}
             >
               {rowIndex === 0 ? index + 1 : player[row]}
-            </button>
+            </div>
           </td>
         ))}
       </tr>
