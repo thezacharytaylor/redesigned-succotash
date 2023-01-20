@@ -41,6 +41,7 @@ describe('Add player', () => {
         </Provider>,
       );
     });
-    // TODO: Setup addition then checking to confirm
+    // TODO: Setup addition
+    // TODO: Setup confirming player was added
   });
 });
