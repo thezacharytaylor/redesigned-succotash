@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import Players from 'app/components/Players';
 import { Provider } from 'react-redux';
