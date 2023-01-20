@@ -44,6 +44,7 @@ const Leaderboard = ({ headings, players }) => {
     }
   };
 
+  // TODO: Resolve
   const handleKeyUp = event => {
     // const currentIndex = datesArray.indexOf(event.target.dataset.date);
     // if (event.key === 'ArrowRight') {
@@ -73,6 +74,7 @@ const Leaderboard = ({ headings, players }) => {
     // }
   };
 
+  // TODO: Resolve
   const focusDayByIndex = index => {
     // buttonRefs.current[index].focus();
   };
