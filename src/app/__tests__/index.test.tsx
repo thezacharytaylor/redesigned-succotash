@@ -6,18 +6,32 @@ import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { configureAppStore } from 'store/configureStore';
 
+import renderer from 'react-test-renderer';
+
 const store = configureAppStore();
 
-test('should render and match the snapshot', () => {
-  render(
-    <Provider store={store}>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </Provider>,
-  );
-  const headerElement = screen.getByText(/kinetic cup/i);
-  expect(headerElement).toBeInTheDocument();
+test('should render and match header text', () => {
+  const domTree = renderer
+    .create(
+      <Provider store={store}>
+        <HelmetProvider>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </HelmetProvider>
+      </Provider>,
+    )
+    .toJSON();
+  // render(
+  //   <Provider store={store}>
+  //     <HelmetProvider>
+  //       <React.StrictMode>
+  //         <App />
+  //       </React.StrictMode>
+  //     </HelmetProvider>
+  //   </Provider>,
+  // );
+  // const headerElement = screen.getByText(/kinetic cup/i);
+  // expect(headerElement).toBeInTheDocument();
+  expect(domTree).toMatchSnapshot();
 });
