@@ -12,6 +12,8 @@ const Row = ({ index, rows, buttonRefFunc, player }) => {
             <div
               className="p-0 text-white bg-transparent border-none cursor-default"
               role="note"
+              // TODO: move tab index to function. Allow table select, then take control of arrow keys to navigate table freely.
+              // https://github.com/thezacharytaylor/workshop-interactions-mechanics/blob/main/components/date-picker/date-picker.js
               tabIndex={0}
               ref={elementRef => {
                 buttonRefFunc(elementRef);
