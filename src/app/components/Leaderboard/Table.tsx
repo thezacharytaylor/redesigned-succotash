@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRef } from 'react';
+import { TransitionGroup } from 'react-transition-group';
+import List from './List';
 import Row from './Row';
 
 const defaultRefArray: (HTMLButtonElement | null)[] = [];
@@ -96,22 +98,12 @@ const Table = ({ headings, players, addBtnRef }) => {
           </tr>
         </thead>
         <tbody>
-          {players
-            .sort((a, b) => b.score - a.score)
-            .map((player, index) => {
-              return (
-                <>
-                  {insertCutOff(index)}
-                  <Row
-                    key={index}
-                    index={index}
-                    rows={rows}
-                    buttonRefFunc={addBtnRef}
-                    player={player}
-                  />
-                </>
-              );
-            })}
+          <List
+            players={players}
+            rows={rows}
+            addBtnRef={addBtnRef}
+            insertCutOff={insertCutOff}
+          />
         </tbody>
       </table>
     </div>

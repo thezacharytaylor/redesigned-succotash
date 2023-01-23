@@ -2,6 +2,7 @@ import YearDisplay from '../YearDisplay';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import Table from './Table';
+import Loading from './Loading';
 
 const defaultRefArray: (HTMLButtonElement | null)[] = [];
 
@@ -27,13 +28,7 @@ const Leaderboard = ({ headings, players }) => {
           addBtnRef={buttonRefLoad}
         />
       )}
-      {players.length === 0 &&
-        (
-          <svg
-            className="animate-spin h-5 w-5 mr-3 ..."
-            viewBox="0 0 24 24"
-          ></svg>
-        ) + ' Processing...'}
+      {players.length === 0 && <Loading />}
     </>
   );
 };
