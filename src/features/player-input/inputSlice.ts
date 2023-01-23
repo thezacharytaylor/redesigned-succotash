@@ -39,18 +39,6 @@ const slice = createSlice({
     setScore(state, action: PayloadAction<number>) {
       state.score = action.payload;
     },
-    // setDate(state, action: PayloadAction<string>) {
-    //   state.date = action.payload
-    // },
-    // setLoading(state, action: PayloadAction<boolean>) {
-    //   state.loading = action.payload;
-    // },
-    // setError(state, action: PayloadAction<string>) {
-    //   state.error = action.payload;
-    // },
-    // getEvents(state, action: PayloadAction<EventType[]>) {
-    //   state.events = action.payload;
-    // },
   },
 });
 
