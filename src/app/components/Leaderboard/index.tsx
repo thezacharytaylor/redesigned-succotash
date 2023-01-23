@@ -4,15 +4,7 @@ import { useRef } from 'react';
 import Table from './Table';
 import Loading from './Loading';
 
-const defaultRefArray: (HTMLButtonElement | null)[] = [];
-
 const Leaderboard = ({ headings, players }) => {
-  const buttonRefs = useRef(defaultRefArray);
-
-  const buttonRefLoad = button => {
-    buttonRefs.current.push(button);
-  };
-
   return (
     <>
       <h2
@@ -21,13 +13,7 @@ const Leaderboard = ({ headings, players }) => {
       >
         <YearDisplay> Individual Qualifying High Scores</YearDisplay>
       </h2>
-      {players.length > 0 && (
-        <Table
-          headings={headings}
-          players={players}
-          addBtnRef={buttonRefLoad}
-        />
-      )}
+      {players.length > 0 && <Table headings={headings} players={players} />}
       {players.length === 0 && <Loading />}
     </>
   );

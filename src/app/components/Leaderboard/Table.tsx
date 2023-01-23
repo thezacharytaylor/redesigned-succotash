@@ -1,20 +1,20 @@
-import React from 'react';
-import { useRef } from 'react';
-import { TransitionGroup } from 'react-transition-group';
+import { useRef, useState } from 'react';
 import List from './List';
-import Row from './Row';
 
-const defaultRefArray: (HTMLButtonElement | null)[] = [];
 // const buttonRefs = useRef(defaultRefArray);
-const rows = ['index', 'name', 'score', 'date'];
+const columns = ['index', 'name', 'score', 'date'];
+const defaultRefArray: (HTMLDivElement | null)[] = [];
 
-const Table = ({ headings, players, addBtnRef }) => {
-  // TODO: Resolve these variables
+const Table = ({ headings, players }) => {
+  const firstFocusedItem = players[0];
+  const [focusedRow, setFocusedRow] = useState(firstFocusedItem);
+  const rowRefs = useRef(defaultRefArray);
+
+  const rowRefLoad = row => {
+    rowRefs.current.push(row);
+  };
+
   // Roving tabIndex
-  // const firstFocusedItemDate = datesArray[0];
-  // const [focusedDate, setFocusedDate] = useState(firstFocusedItemDate);
-  // const buttonRefs = useRef([]);
-
   const handleKeyDown = event => {
     switch (event.key) {
       case 'ArrowUp':
@@ -64,7 +64,15 @@ const Table = ({ headings, players, addBtnRef }) => {
     return (
       <>
         {index === 16 && (
-          <tr key="cutoff">
+          <tr
+            key="cutoff"
+            role="note"
+            tabIndex={0}
+            ref={elementRef => {
+              rowRefLoad(elementRef);
+            }}
+            aria-label="Cut Off Line for Qualficiations"
+          >
             <td className="bg-red-800"></td>
             <td className="text-white bg-red-800">Cutline - Top 16</td>
             <td className="bg-red-800"></td>
@@ -77,11 +85,7 @@ const Table = ({ headings, players, addBtnRef }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table
-        className="table w-full table-zebra"
-        aria-labelledby="leaderboard-header"
-        role="grid"
-      >
+      <table className="table w-full table-zebra" role="grid">
         <thead>
           <tr>
             {headings.map((heading, index) => (
@@ -100,8 +104,8 @@ const Table = ({ headings, players, addBtnRef }) => {
         <tbody>
           <List
             players={players}
-            rows={rows}
-            addBtnRef={addBtnRef}
+            columns={columns}
+            addRowRef={rowRefLoad}
             insertCutOff={insertCutOff}
           />
         </tbody>

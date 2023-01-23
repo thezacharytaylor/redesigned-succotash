@@ -1,7 +1,7 @@
 import { CSSTransition } from 'react-transition-group';
 import Row from './Row';
 
-const List = ({ players, rows, addBtnRef, insertCutOff }) => {
+const List = ({ players, columns, addRowRef, insertCutOff }) => {
   return (
     <>
       {players
@@ -13,8 +13,8 @@ const List = ({ players, rows, addBtnRef, insertCutOff }) => {
               <Row
                 key={index}
                 index={index}
-                rows={rows}
-                buttonRefFunc={addBtnRef}
+                columns={columns}
+                rowRefFunc={addRowRef}
                 player={player}
               />
             </>
