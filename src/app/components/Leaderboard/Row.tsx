@@ -1,12 +1,21 @@
-const Row = ({ index, columns, rowRefFunc, player }) => {
-  const test = { index: 0 };
-
+const Row = ({
+  index,
+  columns,
+  rowRefFunc,
+  player,
+  focusedRow,
+  keyDown,
+  keyUp,
+}) => {
   return (
     <>
       <tr
         key={index}
+        data-rank={index + 1}
         role="note"
-        tabIndex={0}
+        onKeyDown={event => keyDown(event)}
+        onKeyUp={event => keyUp(event)}
+        tabIndex={focusedRow === player ? 0 : -1}
         ref={elementRef => {
           rowRefFunc(elementRef);
         }}
@@ -22,7 +31,6 @@ const Row = ({ index, columns, rowRefFunc, player }) => {
             } text-white`}
           >
             {colIndex === 0 ? index + 1 : player[column]}
-            {/* {(test.index = colIndex)} */}
           </td>
         ))}
       </tr>

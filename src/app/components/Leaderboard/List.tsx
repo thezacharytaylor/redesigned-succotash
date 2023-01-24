@@ -1,7 +1,15 @@
 import { CSSTransition } from 'react-transition-group';
 import Row from './Row';
 
-const List = ({ players, columns, addRowRef, insertCutOff }) => {
+const List = ({
+  players,
+  columns,
+  addRowRef,
+  insertCutOff,
+  focusedRow,
+  keyUp,
+  keyDown,
+}) => {
   return (
     <>
       {players
@@ -16,6 +24,9 @@ const List = ({ players, columns, addRowRef, insertCutOff }) => {
                 columns={columns}
                 rowRefFunc={addRowRef}
                 player={player}
+                focusedRow={focusedRow}
+                keyDown={keyDown}
+                keyUp={keyUp}
               />
             </>
           );
