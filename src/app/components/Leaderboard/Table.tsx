@@ -38,7 +38,7 @@ const Table = ({ headings, players }) => {
 
       if (players.length === currentRank) {
         setFocusedRow(players[0]);
-        focusRowByIndex(0);
+        focusRowByIndex(1);
       } else {
         const nextPlayer = getNextPlayer(nextRow, false);
         setFocusedRow(players[nextPlayer]);
