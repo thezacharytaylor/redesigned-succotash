@@ -7,7 +7,19 @@ import Form from './Form';
 import dayjs from 'dayjs';
 import PlayerData from '../../store/golfers.json';
 
-const defaultPlayer = {
+interface DefaultPlayer {
+  id: number;
+  name: string;
+  score: number;
+  date: string;
+  inCup: boolean;
+  qualified: boolean;
+  checkedIn: boolean;
+  seed: number;
+  previousPlayer: boolean;
+}
+
+const defaultPlayer: DefaultPlayer = {
   id: -1,
   name: '',
   score: 0,
