@@ -1,6 +1,5 @@
 import YearDisplay from '../YearDisplay';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
 import Table from './Table';
 import Loading from './Loading';
 
