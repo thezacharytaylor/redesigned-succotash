@@ -47,31 +47,32 @@ const Table = ({ headings, players }) => {
     console.log(plyr);
   };
 
-  // TODO: Allow roving index on table display for easier navigation
+  // Roving Tab Index for Table keyboard navigation
   const handleKeyUp = event => {
-    const currentIndex = players[Number(event.target.dataset.rank)];
     const currentRank = Number(event.target.dataset.rank);
 
     if (event.key === 'ArrowDown') {
-      // if (currentIndex + 7 <= players.length - 1) {
       const nextRow = getNextRowIndex(currentRank, false);
-      const nextPlayer = getNextPlayer(nextRow, false);
-      console.log(nextRow);
-      logIssues(currentIndex, event.target.dataset.rank, players.length);
-      setFocusedRow(players[nextPlayer]);
-      focusRowByIndex(nextRow);
 
-      // } else {
-      // focusRowByIndex(players.length + 1);
-      // }
+      if (players.length === currentRank) {
+        setFocusedRow(players[0]);
+        focusRowByIndex(0);
+      } else {
+        const nextPlayer = getNextPlayer(nextRow, false);
+        setFocusedRow(players[nextPlayer]);
+        focusRowByIndex(nextRow);
+      }
     } else if (event.key === 'ArrowUp') {
-      // if (currentIndex - 7 > 0) {
-      const nextRow = getNextRowIndex(currentRank, true);
-      const nextPlayer = getNextPlayer(nextRow, true);
-      console.log(nextRow);
-      logIssues(currentIndex, event.target.dataset.rank, players.length);
-      setFocusedRow(players[nextPlayer]);
-      focusRowByIndex(nextRow);
+      if (currentRank === 1) {
+        const nextPlayer = players.length - 2;
+        setFocusedRow(players[nextPlayer]);
+        focusRowByIndex(players.length + 1);
+      } else {
+        const nextRow = getNextRowIndex(currentRank, true);
+        const nextPlayer = getNextPlayer(nextRow, true);
+        setFocusedRow(players[nextPlayer]);
+        focusRowByIndex(nextRow);
+      }
     }
   };
 
