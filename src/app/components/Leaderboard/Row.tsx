@@ -31,6 +31,7 @@ const Row = ({
             } text-white`}
           >
             {colIndex === 0 ? index + 1 : player[column]}
+            {player['previousPlayer'] && colIndex === 1 ? ' 🏌️‍♂️' : ''}
           </td>
         ))}
       </tr>
