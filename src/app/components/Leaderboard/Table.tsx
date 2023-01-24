@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import List from './List';
 
 // const buttonRefs = useRef(defaultRefArray);
-const columns = ['index', 'name', 'score', 'date'];
+const columns: string[] = ['index', 'name', 'score', 'date'];
 const defaultRefArray: HTMLDivElement[] = [];
 
 const Table = ({ headings, players }) => {
@@ -34,24 +34,24 @@ const Table = ({ headings, players }) => {
     const currentRank = Number(event.target.dataset.rank);
 
     if (event.key === 'ArrowDown') {
-      const nextRow = getNextRowIndex(currentRank, false);
+      const nextRow: number = getNextRowIndex(currentRank, false);
 
       if (players.length === currentRank) {
         setFocusedRow(players[0]);
         focusRowByIndex(1);
       } else {
-        const nextPlayer = getNextPlayer(nextRow, false);
+        const nextPlayer: number = getNextPlayer(nextRow, false);
         setFocusedRow(players[nextPlayer]);
         focusRowByIndex(nextRow);
       }
     } else if (event.key === 'ArrowUp') {
       if (currentRank === 1) {
-        const nextPlayer = players.length - 2;
+        const nextPlayer: number = players.length - 2;
         setFocusedRow(players[nextPlayer]);
         focusRowByIndex(players.length + 1);
       } else {
-        const nextRow = getNextRowIndex(currentRank, true);
-        const nextPlayer = getNextPlayer(nextRow, true);
+        const nextRow: number = getNextRowIndex(currentRank, true);
+        const nextPlayer: number = getNextPlayer(nextRow, true);
         setFocusedRow(players[nextPlayer]);
         focusRowByIndex(nextRow);
       }
@@ -84,12 +84,12 @@ const Table = ({ headings, players }) => {
   };
 
   // Set focus to new ref
-  const focusRowByIndex = index => {
+  const focusRowByIndex = (index: number) => {
     rowRefs.current[index].focus();
   };
 
   // TODO: Add something to disable this, say for all time leaderboard
-  const insertCutOff = index => {
+  const insertCutOff = (index: number) => {
     return (
       <>
         {index === 16 && (
