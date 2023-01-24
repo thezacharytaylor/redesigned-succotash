@@ -1,3 +1,4 @@
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Row from './Row';
 
@@ -16,7 +17,7 @@ const List = ({
         .sort((a, b) => b.score - a.score)
         .map((player, index) => {
           return (
-            <>
+            <React.Fragment key={index + 22}>
               {insertCutOff(index)}
               <Row
                 key={index}
@@ -28,7 +29,7 @@ const List = ({
                 keyDown={keyDown}
                 keyUp={keyUp}
               />
-            </>
+            </React.Fragment>
           );
         })}
     </>
