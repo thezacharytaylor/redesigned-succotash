@@ -50,13 +50,15 @@ const Table = ({ headings, players }) => {
   // TODO: Allow roving index on table display for easier navigation
   const handleKeyUp = event => {
     const currentIndex = players[Number(event.target.dataset.rank)];
+    const currentRank = Number(event.target.dataset.rank);
 
     if (event.key === 'ArrowDown') {
       // if (currentIndex + 7 <= players.length - 1) {
-      const nextRow = Number(event.target.dataset.rank) + 1;
+      const nextRow = getNextRowIndex(currentRank, false);
+      const nextPlayer = getNextPlayer(nextRow, false);
       console.log(nextRow);
       logIssues(currentIndex, event.target.dataset.rank, players.length);
-      setFocusedRow(players[nextRow]);
+      setFocusedRow(players[nextPlayer]);
       focusRowByIndex(nextRow);
 
       // } else {
@@ -64,11 +66,37 @@ const Table = ({ headings, players }) => {
       // }
     } else if (event.key === 'ArrowUp') {
       // if (currentIndex - 7 > 0) {
-      const nextRow = Number(event.target.dataset.rank) - 1;
+      const nextRow = getNextRowIndex(currentRank, true);
+      const nextPlayer = getNextPlayer(nextRow, true);
       console.log(nextRow);
       logIssues(currentIndex, event.target.dataset.rank, players.length);
-      setFocusedRow(players[nextRow]);
+      setFocusedRow(players[nextPlayer]);
       focusRowByIndex(nextRow);
+    }
+  };
+
+  // TODO: If an option to disable cutoff is ever built in, this needs to be factored in here
+  const getNextRowIndex = (rank: number, subtract: boolean) => {
+    if (subtract && rank === 17) {
+      return rank;
+    } else if (rank === 1995) {
+      return subtract ? 16 : 18;
+    } else {
+      return subtract ? rank - 1 : rank + 1;
+    }
+  };
+
+  const getNextPlayer = (next: number, subtract: boolean) => {
+    if (players.length === next - 1) {
+      return 0;
+    } else if (subtract && next === 1) {
+      return players.length - 1;
+    } else if (next === 17) {
+      return subtract ? 15 : 16;
+    } else if (next === 16) {
+      return subtract ? next - 2 : next;
+    } else {
+      return subtract ? next - 2 : next;
     }
   };
 
@@ -83,7 +111,7 @@ const Table = ({ headings, players }) => {
       <>
         {index === 16 && (
           <tr
-            data-rank={17}
+            data-rank={1995}
             key="cutoff"
             role="note"
             // tabIndex={0}
@@ -107,7 +135,11 @@ const Table = ({ headings, players }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table w-full table-zebra" role="grid">
+      <table
+        className="table w-full table-zebra"
+        role="grid"
+        aria-label="Table navigated with up and down arrow keys, tab to escape."
+      >
         <thead>
           <tr>
             {headings.map((heading, index) => (
