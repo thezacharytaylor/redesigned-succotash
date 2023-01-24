@@ -1,3 +1,5 @@
+import Label from './Label';
+
 const Row = ({
   index,
   columns,
@@ -9,20 +11,7 @@ const Row = ({
 }) => {
   return (
     <>
-      <tr
-        key={index}
-        data-rank={index + 1}
-        role="note"
-        onKeyDown={event => keyDown(event)}
-        onKeyUp={event => keyUp(event)}
-        tabIndex={focusedRow === player ? 0 : -1}
-        ref={elementRef => {
-          rowRefFunc(elementRef);
-        }}
-        aria-label={`Rank ${index + 1} ${player['name']} scored ${
-          player['score']
-        } on ${player['date']}`}
-      >
+      <tr key={index}>
         {columns.map((column, colIndex) => (
           <td
             key={index + colIndex}
@@ -30,8 +19,18 @@ const Row = ({
               index % 2 === 0 ? '!bg-green-700' : '!bg-green-900'
             } text-white`}
           >
-            {colIndex === 0 ? index + 1 : player[column]}
-            {player['previousPlayer'] && colIndex === 1 ? ' 🏌️‍♂️' : ''}
+            <Label
+              index={index}
+              player={player}
+              rowRefFunc={rowRefFunc}
+              focusedRow={focusedRow}
+              keyDown={keyDown}
+              keyUp={keyUp}
+              nameCol={colIndex === 1}
+            >
+              {colIndex === 0 ? index + 1 : player[column]}
+              {player['previousPlayer'] && colIndex === 1 ? ' 🏌️‍♂️' : ''}
+            </Label>
           </td>
         ))}
       </tr>
