@@ -7,6 +7,7 @@ const defaultRefArray: HTMLDivElement[] = [];
 
 const Table = ({ headings, players }) => {
   const firstFocusedItem = players[0];
+  const [testItem, setTestItem] = useState({ id: 0, rank: 0 });
   const [focusedRow, setFocusedRow] = useState(null);
   const rowRefs = useRef(defaultRefArray);
 
@@ -30,21 +31,32 @@ const Table = ({ headings, players }) => {
     }
   };
 
+  const logIssues = (plyr, rank, length) => {
+    setTestItem({
+      id: plyr !== undefined ? plyr.id : 'cutoff',
+      rank: Number(rank),
+    });
+    console.log(
+      'ID: ' +
+        (plyr !== undefined ? plyr.id : 'cutoff') +
+        ' | Rank: ' +
+        Number(rank) +
+        ' | Array Length: ' +
+        length,
+    );
+    console.log(plyr);
+  };
+
   // TODO: Allow roving index on table display for easier navigation
   const handleKeyUp = event => {
-    // console.log(event.target.dataset.rank);
     const currentIndex = players[Number(event.target.dataset.rank)];
-    console.log(
-      (currentIndex !== undefined ? currentIndex.id : 'cutoff') +
-        ' ' +
-        Number(event.target.dataset.rank) +
-        ' ' +
-        players.length,
-    );
 
     if (event.key === 'ArrowDown') {
       // if (currentIndex + 7 <= players.length - 1) {
       const nextRow = Number(event.target.dataset.rank) + 1;
+      console.log(nextRow);
+      logIssues(currentIndex, event.target.dataset.rank, players.length);
+      setFocusedRow(players[nextRow]);
       focusRowByIndex(nextRow);
 
       // } else {
@@ -53,17 +65,10 @@ const Table = ({ headings, players }) => {
     } else if (event.key === 'ArrowUp') {
       // if (currentIndex - 7 > 0) {
       const nextRow = Number(event.target.dataset.rank) - 1;
+      console.log(nextRow);
+      logIssues(currentIndex, event.target.dataset.rank, players.length);
+      setFocusedRow(players[nextRow]);
       focusRowByIndex(nextRow);
-      console.log(
-        currentIndex.id +
-          ' ' +
-          Number(event.target.dataset.rank) +
-          ' ' +
-          players.length,
-      );
-      // } else {
-      //   focusRowByIndex(0);
-      // }
     }
   };
 
