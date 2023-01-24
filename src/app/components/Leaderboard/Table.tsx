@@ -6,8 +6,6 @@ const columns = ['index', 'name', 'score', 'date'];
 const defaultRefArray: HTMLDivElement[] = [];
 
 const Table = ({ headings, players }) => {
-  const firstFocusedItem = players[0];
-  const [testItem, setTestItem] = useState({ id: 0, rank: 0 });
   const [focusedRow, setFocusedRow] = useState(null);
   const rowRefs = useRef(defaultRefArray);
 
@@ -29,22 +27,6 @@ const Table = ({ headings, players }) => {
         event.preventDefault();
         break;
     }
-  };
-
-  const logIssues = (plyr, rank, length) => {
-    setTestItem({
-      id: plyr !== undefined ? plyr.id : 'cutoff',
-      rank: Number(rank),
-    });
-    console.log(
-      'ID: ' +
-        (plyr !== undefined ? plyr.id : 'cutoff') +
-        ' | Rank: ' +
-        Number(rank) +
-        ' | Array Length: ' +
-        length,
-    );
-    console.log(plyr);
   };
 
   // Roving Tab Index for Table keyboard navigation
