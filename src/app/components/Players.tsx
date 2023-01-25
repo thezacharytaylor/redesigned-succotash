@@ -77,7 +77,7 @@ const Players = () => {
       {
         id: players[players.length - 1].id + 1,
         name: playerInput.name,
-        score: playerInput.score,
+        score: +playerInput.score,
         date: dayjs().format('MM/DD/YYYY'),
         inCup: true,
         qualified: true,
