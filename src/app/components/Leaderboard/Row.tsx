@@ -9,6 +9,11 @@ const Row = ({
   keyDown,
   keyUp,
 }) => {
+  const rowColor = index > 15 ? 'out' : 'in';
+  const colors = {
+    out: ['bg-primary-focus/[.5]', 'bg-primary-focus/[.3]'],
+    in: ['bg-accent/[.5]', 'bg-accent-focus/[.5]'],
+  };
   return (
     <>
       <tr key={index}>
@@ -16,7 +21,7 @@ const Row = ({
           <td
             key={index + colIndex}
             className={`${colIndex === 0 ? 'pl-6' : ''} ${
-              index % 2 === 0 ? '!bg-green-700' : '!bg-green-900'
+              index % 2 === 0 ? colors[rowColor][0] : colors[rowColor][1]
             } text-white`}
           >
             <Label

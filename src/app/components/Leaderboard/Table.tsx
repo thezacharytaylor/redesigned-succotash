@@ -106,10 +106,10 @@ const Table = ({ headings, players }) => {
             }}
             aria-label="Cut Off Line for Qualficiations"
           >
-            <td className="bg-red-800"></td>
-            <td className="text-white bg-red-800">Cutline - Top 16</td>
-            <td className="bg-red-800"></td>
-            <td className="text-white bg-red-800">Cutline - Top 16</td>
+            <td className="bg-error"></td>
+            <td className="text-white bg-error">Cutline - Top 16</td>
+            <td className="bg-error"></td>
+            <td className="text-white bg-error">Cutline - Top 16</td>
           </tr>
         )}
       </>
@@ -119,7 +119,7 @@ const Table = ({ headings, players }) => {
   return (
     <div className="overflow-x-auto">
       <table
-        className="table w-full table-zebra"
+        className="table w-full"
         role="grid"
         aria-label="Table navigated with up and down arrow keys, tab to escape."
       >

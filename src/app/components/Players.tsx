@@ -95,12 +95,12 @@ const Players = () => {
   // const deletePlayer = id => {};
 
   return (
-    <div className="p-10 my-5 bg-gray-200 border-solid rounded-md shadow-sm border-slate-50">
+    <div className="p-10 my-5 border-solid rounded-md shadow-sm bg-primary-content border-slate-50">
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
         players={players}
       />
-      <hr className="my-4 border-gray-800 border-solid" />
+      <hr className="my-4 border-solid border-secondary-content" />
       <h2 className="mb-4 text-lg font-bold text-gray-800">Add Score</h2>
       <Form submit={handleFormSubmit} players={players} />
     </div>
