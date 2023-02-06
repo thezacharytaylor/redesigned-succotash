@@ -18,39 +18,42 @@ const defaultPlayer = {
   previousPlayer: false,
 };
 
-const Form = ({ submit, players }) => {
+const Form = ({ submit, players }): JSX.Element => {
   const playerInput = useSelector((state: RootState) => state.playerInput);
   const dispatch = useDispatch();
   const [filteredPlayers, setFilteredPlayers] = useState([defaultPlayer]);
 
-  const handleUpdate = event => {
+  const handleUpdate = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    value: string,
+  ) => {
     event.preventDefault();
-    dispatch(setName(event.target.value));
+    dispatch(setName(value));
     setFilteredPlayers([]);
   };
 
   const handlePlayerInput = (event: {
-    target: { name: string; value: any };
+    target: { name: string; value: string | number };
   }) => {
     const { name, value } = event.target;
 
     switch (event.target.name) {
       case 'name':
-        dispatch(setName(value));
+        dispatch(setName(typeof value === 'string' ? value : ''));
         break;
       default:
-        dispatch(setScore(value));
+        dispatch(setScore(typeof value === 'number' ? value : 0));
         break;
     }
 
     if (name === 'name') {
-      handlePrediction(value);
+      handlePrediction(typeof value === 'string' ? value : '');
     }
   };
 
-  const handlePrediction = value => {
+  const handlePrediction = (value: string) => {
     if (value.length > 0) {
-      const newPlayers = players.filter(player => {
+      const newPlayers = players.filter((player: { name: string }) => {
         const uniformName: string = player.name.toUpperCase();
         const uniformValue: string = value.toUpperCase();
         if (
@@ -83,10 +86,9 @@ const Form = ({ submit, players }) => {
                 return (
                   <li key={index}>
                     <button
-                      className="w-full p-2 text-left text-gray-800 bg-gray-100 border-0 hover:bg-gray-300"
-                      onClick={event => handleUpdate(event)}
+                      className="w-full p-2 text-left text-gray-800 border-0 bg-base-300 hover:bg-base-100"
+                      onClick={event => handleUpdate(event, player.name)}
                       name="name"
-                      value={player.name}
                     >
                       {player.name}
                     </button>

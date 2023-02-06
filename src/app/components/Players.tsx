@@ -13,8 +13,8 @@ interface DefaultPlayer {
   score: number;
   date: string;
   inCup: boolean;
-  qualified: boolean;
-  checkedIn: boolean;
+  qualified?: boolean;
+  checkedIn?: boolean;
   seed: number;
   previousPlayer: boolean;
 }
@@ -34,9 +34,9 @@ const defaultPlayer: DefaultPlayer = {
 const Players = () => {
   const playerInput = useSelector((state: RootState) => state.playerInput);
   const dispatch = useDispatch();
-  const [players, setPlayers] = useState([defaultPlayer]);
+  const [players, setPlayers] = useState<DefaultPlayer[]>([defaultPlayer]);
 
-  useEffect(() => {
+  useEffect((): void => {
     setPlayers([...PlayerData]);
   }, []);
 
@@ -54,7 +54,7 @@ const Players = () => {
   };
 
   // TODO: To Store
-  const updatePlayer = () => {
+  const updatePlayer = (): boolean => {
     let locatedPlayer = false;
     const updatedPlayers = players.map(golfer => {
       if (golfer.name === playerInput.name) {
@@ -71,7 +71,7 @@ const Players = () => {
   };
 
   // TODO: To Store
-  const addPlayer = () => {
+  const addPlayer = (): void => {
     setPlayers([
       ...players,
       {
