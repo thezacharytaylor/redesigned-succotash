@@ -33,21 +33,21 @@ const Form = ({ submit, players }): JSX.Element => {
   };
 
   const handlePlayerInput = (event: {
-    target: { name: string; value: string | number };
+    target: { name: string; value: string };
   }) => {
     const { name, value } = event.target;
 
     switch (event.target.name) {
       case 'name':
-        dispatch(setName(typeof value === 'string' ? value : ''));
+        dispatch(setName(value));
         break;
       default:
-        dispatch(setScore(typeof value === 'number' ? value : 0));
+        dispatch(setScore(Number(value)));
         break;
     }
 
     if (name === 'name') {
-      handlePrediction(typeof value === 'string' ? value : '');
+      handlePrediction(value);
     }
   };
 
