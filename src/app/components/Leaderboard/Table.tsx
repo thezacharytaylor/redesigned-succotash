@@ -1,4 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  KeyboardEvent,
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { ReactI18NextChild } from 'react-i18next';
 import List from './List';
 
 // const buttonRefs = useRef(defaultRefArray);
@@ -13,14 +24,14 @@ const Table = ({ headings, players }) => {
     setFocusedRow(players[0]);
   }, [players]);
 
-  const rowRefLoad = row => {
+  const rowRefLoad = (row: HTMLDivElement | null) => {
     if (row !== null) {
       rowRefs.current.push(row);
     }
   };
 
   // Roving tabIndex error prevention
-  const handleKeyDown = event => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLTableRowElement>) => {
     switch (event.key) {
       case 'ArrowUp':
       case 'ArrowDown':
@@ -30,8 +41,11 @@ const Table = ({ headings, players }) => {
   };
 
   // Roving Tab Index for Table keyboard navigation
-  const handleKeyUp = event => {
-    const currentRank = Number(event.target.dataset.rank);
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLTableRowElement>) => {
+    const currentRank =
+      event.target instanceof HTMLElement
+        ? Number(event.target.dataset.rank)
+        : 0;
 
     if (event.key === 'ArrowDown') {
       const nextRow: number = getNextRowIndex(currentRank, false);
@@ -125,15 +139,32 @@ const Table = ({ headings, players }) => {
       >
         <thead>
           <tr>
-            {headings.map((heading, index) => (
-              <th
-                key={index}
-                className={`${index === 1 ? 'text-left' : ''} text-white`}
-                scope="col"
-              >
-                {heading}
-              </th>
-            ))}
+            {headings.map(
+              (
+                heading:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<
+                      unknown,
+                      string | JSXElementConstructor<unknown>
+                    >
+                  | ReactFragment
+                  | ReactPortal
+                  | Iterable<ReactI18NextChild>
+                  | null
+                  | undefined,
+                index: Key | null | undefined,
+              ) => (
+                <th
+                  key={index}
+                  className={`${index === 1 ? 'text-left' : ''} text-white`}
+                  scope="col"
+                >
+                  {heading}
+                </th>
+              ),
+            )}
           </tr>
         </thead>
         <tbody>
