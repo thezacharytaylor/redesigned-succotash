@@ -128,9 +128,7 @@ const Table = ({ headings, players }) => {
             {headings.map((heading, index) => (
               <th
                 key={index}
-                className={`${
-                  index === 1 ? 'text-left' : ''
-                } !bg-green-900 text-white`}
+                className={`${index === 1 ? 'text-left' : ''} text-white`}
                 scope="col"
               >
                 {heading}
