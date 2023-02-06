@@ -8,7 +8,14 @@
     "qualified": true,
     "checkedIn": true,
     "seed": 1,
-    "previousPlayer": false
+    "previousPlayer": true,
+    "lifetime_tourney_game_avg": 9.25,
+    "lifetime_tourney_shot_avg": 0.514,
+    "lifetime_best_score": 20,
+    "tourney_green_accuracy": 30.56,
+    "highest_tourney_score": 12,
+    "highest_tourney_shot": 4,
+    "matches": [{ "year": 2022, "matches": [1, 2, 3] }]
   },
   {
     "id": 2,
@@ -19,7 +26,7 @@
     "qualified": true,
     "checkedIn": true,
     "seed": 2,
-    "previousPlayer": true
+    "previousPlayer": false
   },
   {
     "id": 3,
@@ -129,7 +136,14 @@
     "qualified": false,
     "checkedIn": false,
     "seed": 3,
-    "previousPlayer": false
+    "previousPlayer": true,
+    "lifetime_tourney_game_avg": 8.3333,
+    "lifetime_tourney_shot_avg": 0.463,
+    "lifetime_best_score": 16,
+    "tourney_green_accuracy": 38.89,
+    "highest_tourney_score": 9,
+    "highest_tourney_shot": 2,
+    "matches": [{ "year": 2022, "matches": [1, 2, 3] }]
   },
   {
     "id": 13,
@@ -184,6 +198,6 @@
     "qualified": false,
     "checkedIn": false,
     "seed": 17,
-    "previousPlayer": true
+    "previousPlayer": false
   }
 ]
