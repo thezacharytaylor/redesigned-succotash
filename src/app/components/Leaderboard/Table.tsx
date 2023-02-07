@@ -14,7 +14,7 @@ import List from './List';
 
 // const buttonRefs = useRef(defaultRefArray);
 const columns: string[] = ['index', 'name', 'score', 'date'];
-const defaultRefArray: HTMLDivElement[] = [];
+const defaultRefArray: Array<HTMLDivElement | HTMLAnchorElement> = [];
 
 const Table = ({ headings, players }) => {
   const [focusedRow, setFocusedRow] = useState(null);
@@ -24,14 +24,18 @@ const Table = ({ headings, players }) => {
     setFocusedRow(players[0]);
   }, [players]);
 
-  const rowRefLoad = (row: HTMLDivElement | null) => {
+  const rowRefLoad = (row: HTMLDivElement | HTMLAnchorElement | null) => {
     if (row !== null) {
       rowRefs.current.push(row);
     }
   };
 
   // Roving tabIndex error prevention
-  const handleKeyDown = (event: KeyboardEvent<HTMLTableRowElement>) => {
+  const handleKeyDown = (
+    event: KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => {
     switch (event.key) {
       case 'ArrowUp':
       case 'ArrowDown':
@@ -41,7 +45,11 @@ const Table = ({ headings, players }) => {
   };
 
   // Roving Tab Index for Table keyboard navigation
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLTableRowElement>) => {
+  const handleKeyUp = (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => {
     const currentRank =
       event.target instanceof HTMLElement
         ? Number(event.target.dataset.rank)

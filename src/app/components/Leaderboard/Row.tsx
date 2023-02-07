@@ -1,14 +1,27 @@
 import Label from './Label';
+import DefaultPlayer from 'app/interfaces/defaultPlayer';
 
-const Row = ({
-  index,
-  columns,
-  rowRefFunc,
-  player,
-  focusedRow,
-  keyDown,
-  keyUp,
-}) => {
+interface Props {
+  index: number;
+  columns: string[];
+  rowRefFunc: (row: HTMLDivElement | HTMLAnchorElement | null) => void;
+  player: DefaultPlayer;
+  focusedRow: DefaultPlayer | null;
+  keyDown: (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
+  keyUp: (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
+}
+
+const Row = (props: Props) => {
+  const { index, columns, rowRefFunc, player, focusedRow, keyDown, keyUp } =
+    props;
   const rowColor = index > 15 ? 'out' : 'in';
   const colors = {
     out: ['bg-primary-focus/[.5]', 'bg-primary-focus/[.3]'],

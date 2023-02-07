@@ -5,11 +5,19 @@ import DefaultPlayer from 'app/interfaces/defaultPlayer';
 interface Props {
   players: DefaultPlayer[];
   columns: string[];
-  addRowRef: (row: HTMLDivElement | null) => void;
+  addRowRef: (row: HTMLDivElement | HTMLAnchorElement | null) => void;
   insertCutOff: (index: Key | null | number) => JSX.Element;
-  focusedRow: number | null;
-  keyUp: (event: KeyboardEvent<HTMLTableRowElement>) => void;
-  keyDown: (event: React.KeyboardEvent<HTMLTableRowElement>) => void;
+  focusedRow: DefaultPlayer | null;
+  keyUp: (
+    event: KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
+  keyDown: (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
 }
 
 const List = (props: Props): JSX.Element => {
@@ -23,22 +31,15 @@ const List = (props: Props): JSX.Element => {
     keyDown,
   } = props;
 
-  const checkKey = (num: Key | null | undefined | number, key: boolean) => {
-    if (typeof num === 'number') {
-      return key ? num + 22 : num;
-    } else {
-      return 0;
-    }
-  };
   // TODO: Move Cutline to after row component call.
   return (
     <>
       {players
         .sort((a: { score: number }, b: { score: number }) => b.score - a.score)
-        .map((player: DefaultPlayer, index: React.Key | null | undefined) => {
+        .map((player: DefaultPlayer, index: number) => {
           return (
-            <React.Fragment key={checkKey(index, true)}>
-              {insertCutOff(checkKey(index, false))}
+            <React.Fragment key={index}>
+              {insertCutOff(index)}
               <Row
                 key={index}
                 index={index}

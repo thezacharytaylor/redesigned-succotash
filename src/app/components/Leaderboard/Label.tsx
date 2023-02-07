@@ -1,15 +1,37 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-const Label = ({
-  index,
-  player,
-  focusedRow,
-  rowRefFunc,
-  keyUp,
-  keyDown,
-  children,
-  nameCol,
-}) => {
+import DefaultPlayer from 'app/interfaces/defaultPlayer';
+
+interface Props {
+  index: number;
+  player: DefaultPlayer;
+  focusedRow: DefaultPlayer | null;
+  rowRefFunc: (row: HTMLDivElement | HTMLAnchorElement | null) => void;
+  keyDown: (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
+  keyUp: (
+    event: React.KeyboardEvent<
+      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
+    >,
+  ) => void;
+  nameCol: boolean;
+  children?: React.ReactNode;
+}
+
+const Label = (props: Props) => {
+  const {
+    index,
+    player,
+    focusedRow,
+    rowRefFunc,
+    keyUp,
+    keyDown,
+    nameCol,
+    children,
+  } = props;
   const buildResult = () => {
     if (nameCol) {
       if (player['previousPlayer']) {
