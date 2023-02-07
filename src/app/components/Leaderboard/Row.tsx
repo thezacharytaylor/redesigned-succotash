@@ -17,7 +17,7 @@ const Row = ({
   return (
     <>
       <tr key={index}>
-        {columns.map((column, colIndex) => (
+        {columns.map((column: string | number, colIndex: number) => (
           <td
             key={index + colIndex}
             className={`${colIndex === 0 ? 'pl-6' : ''} ${

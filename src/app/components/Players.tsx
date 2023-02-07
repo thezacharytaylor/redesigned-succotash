@@ -46,7 +46,7 @@ const Players = () => {
   // TODO: Cleanup code
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const updatedPlayer = updatePlayer();
+    const updatedPlayer: boolean = updatePlayer();
 
     if (!updatedPlayer) {
       addPlayer();
@@ -56,15 +56,17 @@ const Players = () => {
   // TODO: To Store
   const updatePlayer = (): boolean => {
     let locatedPlayer = false;
-    const updatedPlayers = players.map(golfer => {
-      if (golfer.name === playerInput.name) {
-        golfer.score = playerInput.score;
-        golfer.date = dayjs().format('MM/DD/YYYY');
-        locatedPlayer = true;
-      }
+    const updatedPlayers: DefaultPlayer[] = players.map(
+      (golfer: DefaultPlayer) => {
+        if (golfer.name === playerInput.name) {
+          golfer.score = playerInput.score;
+          golfer.date = dayjs().format('MM/DD/YYYY');
+          locatedPlayer = true;
+        }
 
-      return golfer;
-    });
+        return golfer;
+      },
+    );
 
     setPlayers(updatedPlayers);
     return locatedPlayer;
