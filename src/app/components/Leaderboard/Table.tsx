@@ -103,7 +103,7 @@ const Table = ({ headings, players }) => {
   };
 
   // TODO: Add something to disable this, say for all time leaderboard
-  const insertCutOff = (index: number) => {
+  const insertCutOff = (index: Key | null | number) => {
     return (
       <>
         {index === 16 && (
