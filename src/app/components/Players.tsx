@@ -6,18 +6,7 @@ import LeaderBoard from './Leaderboard';
 import Form from './Form';
 import dayjs from 'dayjs';
 import PlayerData from '../../store/golfers.json';
-
-interface DefaultPlayer {
-  id: number;
-  name: string;
-  score: number;
-  date: string;
-  inCup: boolean;
-  qualified?: boolean;
-  checkedIn?: boolean;
-  seed: number;
-  previousPlayer: boolean;
-}
+import DefaultPlayer from 'app/interfaces/defaultPlayer';
 
 const defaultPlayer: DefaultPlayer = {
   id: -1,
