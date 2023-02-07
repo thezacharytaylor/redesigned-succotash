@@ -1,22 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import DefaultPlayer from 'app/interfaces/defaultPlayer';
+import LeaderboardTableProps from 'app/interfaces/leaderboardPropTypes';
 
-interface Props {
+interface Props extends LeaderboardTableProps {
   index: number;
   player: DefaultPlayer;
-  focusedRow: DefaultPlayer | null;
-  rowRefFunc: (row: HTMLDivElement | HTMLAnchorElement | null) => void;
-  keyDown: (
-    event: React.KeyboardEvent<
-      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
-    >,
-  ) => void;
-  keyUp: (
-    event: React.KeyboardEvent<
-      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
-    >,
-  ) => void;
   nameCol: boolean;
   children?: React.ReactNode;
 }
@@ -26,7 +14,7 @@ const Label = (props: Props) => {
     index,
     player,
     focusedRow,
-    rowRefFunc,
+    addRowRef,
     keyUp,
     keyDown,
     nameCol,
@@ -48,7 +36,7 @@ const Label = (props: Props) => {
               onKeyUp={event => keyUp(event)}
               tabIndex={focusedRow === player ? 0 : -1}
               ref={elementRef => {
-                rowRefFunc(elementRef);
+                addRowRef(elementRef);
               }}
               aria-label={`Rank ${index + 1} ${player['name']} scored ${
                 player['score']
@@ -67,7 +55,7 @@ const Label = (props: Props) => {
             onKeyUp={event => keyUp(event)}
             tabIndex={focusedRow === player ? 0 : -1}
             ref={elementRef => {
-              rowRefFunc(elementRef);
+              addRowRef(elementRef);
             }}
             aria-label={`Rank ${index + 1} ${player['name']} scored ${
               player['score']

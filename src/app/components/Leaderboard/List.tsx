@@ -1,32 +1,21 @@
-import React, { Key, KeyboardEvent } from 'react';
+import React from 'react';
 import Row from './Row';
 import DefaultPlayer from 'app/interfaces/defaultPlayer';
+import LeaderboardTableProps from 'app/interfaces/leaderboardPropTypes';
 
-interface Props {
+interface Props extends LeaderboardTableProps {
   players: DefaultPlayer[];
   columns: string[];
-  addRowRef: (row: HTMLDivElement | HTMLAnchorElement | null) => void;
-  insertCutOff: (index: Key | null | number) => JSX.Element;
-  focusedRow: DefaultPlayer | null;
-  keyUp: (
-    event: KeyboardEvent<
-      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
-    >,
-  ) => void;
-  keyDown: (
-    event: React.KeyboardEvent<
-      HTMLTableRowElement | HTMLAnchorElement | HTMLDivElement
-    >,
-  ) => void;
+  insertCutOff: (index: React.Key | null | number) => JSX.Element;
 }
 
 const List = (props: Props): JSX.Element => {
   const {
     players,
     columns,
+    focusedRow,
     addRowRef,
     insertCutOff,
-    focusedRow,
     keyUp,
     keyDown,
   } = props;
@@ -44,7 +33,7 @@ const List = (props: Props): JSX.Element => {
                 key={index}
                 index={index}
                 columns={columns}
-                rowRefFunc={addRowRef}
+                addRowRef={addRowRef}
                 player={player}
                 focusedRow={focusedRow}
                 keyDown={keyDown}
