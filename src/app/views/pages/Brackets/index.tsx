@@ -3,10 +3,10 @@ import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
 import Players from 'app/components/Players';
 
-const Leaderboard = () => {
+const Brackets = () => {
   return (
     <>
-      <Helmet>Leaderboard</Helmet>
+      <Helmet>Brackets</Helmet>
       <NavBar />
       <PageWrapper>
         <Players />
@@ -15,4 +15,4 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+export default Brackets;

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Brackets from './views/pages/Brackets';
 import Home from './views/pages/Home';
 import Leaderboard from './views/pages/Leaderboard';
 // import DashboardDefaultContent from './views/dashboard/dashboard-default-content-new';
@@ -9,6 +10,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="leaderboard" element={<Leaderboard />} />
+      <Route path="brackets" element={<Brackets />} />
       {/* <Route path="dashboard" element={<Dashboard />}>
         <Route index element={<DashboardDefaultContent />} />
         <Route

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 // import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { NewspaperIcon } from '@heroicons/react/24/solid';
+import { NewspaperIcon, TrophyIcon } from '@heroicons/react/24/solid';
 import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
 import { ChartBarIcon } from '@heroicons/react/24/solid';
 
@@ -17,18 +17,13 @@ export function Nav() {
         <NewspaperIcon className="w-5 h-5 mr-1" />
         Documentation
       </Item>
-      <Item
-        href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
-        target="_blank"
-        title="Github Page"
-        rel="noopener noreferrer"
-      >
-        <GithubIcon />
-        Github
-      </Item>
       <Item href="/leaderboard" target="" title="Leaderboard">
         <ChartBarIcon className="w-5 h-5 mr-1" />
         Leaderboard
+      </Item>
+      <Item href="/brackets" target="" title="Brackets">
+        <TrophyIcon className="w-5 h-5 mr-1" />
+        Brackets
       </Item>
     </Wrapper>
   );
