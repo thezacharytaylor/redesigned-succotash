@@ -4,8 +4,15 @@ import styled from 'styled-components/macro';
 export function Logo() {
   return (
     <Wrapper>
-      <Title>Kinetic Cup</Title>
-      <Description>Fore!</Description>
+      <img
+        src="/logo192.png"
+        alt="logo"
+        width="25"
+        height="25"
+        className="mr-1.5 pb-2"
+      />
+      <Title>Cooking: KineticCup</Title>
+      <Description></Description>
     </Wrapper>
   );
 }
