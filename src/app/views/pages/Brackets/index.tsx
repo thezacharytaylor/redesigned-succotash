@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
 import { PageWrapper } from 'app/components/PageWrapper';
-import Players from 'app/components/Players';
+import Bracket from 'app/components/Bracket';
 
 const Brackets = () => {
   return (
@@ -9,7 +9,7 @@ const Brackets = () => {
       <Helmet>Brackets</Helmet>
       <NavBar />
       <PageWrapper>
-        <Players />
+        <Bracket />
       </PageWrapper>
     </>
   );
