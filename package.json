@@ -158,5 +158,6 @@
     "json-server-auth": "2.1.0",
     "postcss": "8.4.20",
     "tailwindcss": "3.2.4"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
