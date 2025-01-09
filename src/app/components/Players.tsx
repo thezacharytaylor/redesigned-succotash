@@ -86,7 +86,7 @@ const Players = () => {
   // const deletePlayer = id => {};
 
   return (
-    <div className="p-10 my-5 border-solid rounded-md shadow-sm bg-primary-content border-slate-50">
+    <div className="p-10 my-5 border-solid rounded-md shadow-sm bg-base-200 border-slate-50">
       <LeaderBoard
         headings={['Rank', 'Name', 'Score', 'Date']}
         players={players}

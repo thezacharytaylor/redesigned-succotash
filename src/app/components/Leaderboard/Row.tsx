@@ -13,8 +13,8 @@ const Row = (props: Props) => {
     props;
   const rowColor = index > 15 ? 'out' : 'in';
   const colors = {
-    out: ['bg-primary-focus/[.5]', 'bg-primary-focus/[.3]'],
-    in: ['bg-accent/[.5]', 'bg-accent-focus/[.5]'],
+    in: ['bg-primary-focus/[.5]', 'bg-secondary-focus/[.5]'],
+    out: ['bg-accent/[.5]', 'bg-accent-focus/[.5]'],
   };
   return (
     <>

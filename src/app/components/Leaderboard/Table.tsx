@@ -166,7 +166,7 @@ const Table = ({ headings, players }) => {
               ) => (
                 <th
                   key={index}
-                  className={`${index === 1 ? 'text-left' : ''} text-white`}
+                  className={`${index === 1 ? 'text-left' : ''} bg-base-300`}
                   scope="col"
                 >
                   {heading}
