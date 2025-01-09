@@ -42,37 +42,96 @@ const Bracket = () => {
         <BracketLayout
           players={[
             'Jon Smith',
-            'Hank Hill',
+            'Hank Hull',
             'Chris Crill',
-            'Ken Price',
+            'Dani Sprinkle',
             'Jeremy Morris',
             "Tom O'Conner",
             'Mike Smith',
             "Antonio T'Von",
           ]}
-        />
-        <BracketLayout
-          players={['Jon Smith', 'Ken Price', 'Jeremy Morris', 'Mike Smith']}
-        />
-        <BracketLayout players={['Ken Price', 'Mike Smith']} />
-        <BracketLayout players={['Ken Price', 'Jeremy Morris']} />
-        <BracketLayout players={['Jon Smith', 'Jeremy Morris']} />
-        <BracketLayout
-          players={['Jon Smith', 'Ken Price', 'Jeremy Morris', 'Mike Smith']}
         />
         <BracketLayout
           players={[
             'Jon Smith',
-            'Hank Hill',
-            'Chris Crill',
-            'Ken Price',
+            'Dani Sprinkle',
             'Jeremy Morris',
-            "Tom O'Conner",
             'Mike Smith',
-            "Antonio T'Von",
+          ]}
+        />
+        <BracketLayout players={['Dani Sprinkle', 'Mike Smith']} />
+        <BracketLayout players={['Dani Sprinkle', 'Tiffany Taylor']} />
+        <BracketLayout players={['Tiffany Taylor', 'Jasmine Hiller']} />
+        <BracketLayout
+          players={[
+            'Cave Johnson',
+            'Tiffany Taylor',
+            'Jasmine Hiller',
+            'Haeley Toomey',
+          ]}
+        />
+        <BracketLayout
+          players={[
+            'Cave Johnson',
+            'Caroline Potato',
+            'Roderick Strong',
+            'Tiffany Taylor',
+            'Jasmine Hiller',
+            'Floor Jensen',
+            'Haley Toomey',
+            'Adam Cole',
           ]}
         />
       </div>
+      <table className="table w-full">
+        <tbody>
+          <tr>
+            <td className="p-0.5">Jon Smith</td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5">Hank Hull</td>
+          </tr>
+          <tr>
+            <td className="p-0.5">Chris Stewart</td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5">Kyle Paper</td>
+          </tr>
+          <tr>
+            <td className="p-0.5">Jon Smith</td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5">Hank Hull</td>
+          </tr>
+          <tr>
+            <td className="p-0.5">Jon Smith</td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5">Hank Hull</td>
+          </tr>
+          <tr>
+            <td className="p-0.5">Jon Smith</td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5"></td>
+            <td className="p-0.5">Hank Hull</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
