@@ -1,9 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 // import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { NewspaperIcon, TrophyIcon } from '@heroicons/react/24/solid';
-import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
-import { ChartBarIcon } from '@heroicons/react/24/solid';
+import {
+  ChartBarIcon,
+  NewspaperIcon,
+  TrophyIcon,
+} from '@heroicons/react/24/solid';
+// import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
 
 export function Nav() {
   return (

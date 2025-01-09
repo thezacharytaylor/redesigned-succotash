@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    theme: ['dracula', 'halloween'],
+    theme: ['dracula', 'halloween', 'lemonade', 'pastel', 'forest'],
   },
+  darkMode: ['class', '[data-theme="forest"]'],
 };

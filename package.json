@@ -1,5 +1,5 @@
 {
-  "name": "enterprise-book",
+  "name": "react-golf",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,7 +9,7 @@
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
     "@headlessui/react": "1.7.7",
-    "@heroicons/react": "2.0.13",
+    "@heroicons/react": "2.1.5",
     "@mui/icons-material": "5.11.0",
     "@mui/lab": "5.0.0-alpha.114",
     "@mui/material": "5.11.2",
@@ -159,5 +159,5 @@
     "postcss": "8.4.20",
     "tailwindcss": "3.2.4"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.6.0"
 }

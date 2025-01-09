@@ -7,7 +7,8 @@ import { PageWrapper } from '../PageWrapper';
 
 export function NavBar() {
   return (
-    <Wrapper>
+    // TODO: Get a light gray bg on this, but Wrapper doesnt show bg-x, but PageWrapper does, but doesn't cover the whole thing
+    <Wrapper className="">
       <PageWrapper>
         <Logo />
         <Nav />
@@ -23,12 +24,11 @@ const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #00141b;
+  background-color: oklch(var(--p));
   z-index: 2;
 
   @supports (backdrop-filter: blur(10px)) {
     backdrop-filter: blur(10px);
-    background-color: #00141b;
   }
 
   ${PageWrapper} {

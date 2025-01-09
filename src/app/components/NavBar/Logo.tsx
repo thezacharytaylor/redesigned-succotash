@@ -5,7 +5,7 @@ export function Logo() {
   return (
     <Wrapper>
       <img
-        src="/logo192.png"
+        src="/logo192-dark.png"
         alt="logo"
         width="25"
         height="25"
